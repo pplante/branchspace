@@ -1,9 +1,11 @@
 ---
 id: TASK-002
 title: Git Utilities Module
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - claude
 created_date: '2026-01-31 21:19'
+updated_date: '2026-01-31 21:41'
 labels:
   - infrastructure
   - git
