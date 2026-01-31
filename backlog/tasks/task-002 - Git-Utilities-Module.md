@@ -1,11 +1,11 @@
 ---
 id: TASK-002
 title: Git Utilities Module
-status: In Progress
+status: Done
 assignee:
   - claude
 created_date: '2026-01-31 21:19'
-updated_date: '2026-01-31 21:55'
+updated_date: '2026-01-31 21:58'
 labels:
   - infrastructure
   - git
@@ -31,13 +31,13 @@ All operations should wrap git CLI commands with proper error handling.
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Can detect if current directory is in a git repo
-- [ ] #2 Can list existing worktrees with metadata
-- [ ] #3 Can create worktree with new branch
-- [ ] #4 Can remove worktree safely
-- [ ] #5 Protected branch list configurable or hard-coded per README
-- [ ] #6 Detects uncommitted changes and unpushed commits
-- [ ] #7 Unit tests for git utilities
+- [x] #1 Can detect if current directory is in a git repo
+- [x] #2 Can list existing worktrees with metadata
+- [x] #3 Can create worktree with new branch
+- [x] #4 Can remove worktree safely
+- [x] #5 Protected branch list configurable or hard-coded per README
+- [x] #6 Detects uncommitted changes and unpushed commits
+- [x] #7 Unit tests for git utilities
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -58,3 +58,40 @@ All operations should wrap git CLI commands with proper error handling.
 2. Fix test infrastructure and assertions in `test_git_utils.py`
 3. Run tests to verify all pass
 <!-- SECTION:PLAN:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+## Summary
+
+Fixed implementation bugs and test infrastructure issues in the Git Utilities Module. The module was already substantially implemented but had 18 failing tests out of 32.
+
+## Changes
+
+### Implementation Fixes (`src/branchspace/git_utils.py`)
+
+1. **`list_worktrees()`**: Fixed branch name parsing to strip `refs/heads/` prefix - branches are now returned as `main` instead of `refs/heads/main`
+
+2. **`create_worktree()`**: Added `create_branch` parameter (default `True`) to support:
+   - Creating worktrees with new branches using `-b` flag
+   - Creating worktrees with existing branches
+
+3. **`list_branches()`**: Completely rewrote `is_checked_out_elsewhere` logic - now properly checks if a branch is checked out in another worktree by comparing against `list_worktrees()` results instead of incorrectly checking if the branch exists
+
+4. **`remove_worktree()`**: Added `repository_path` parameter to allow running the command from the correct git repository context
+
+### Test Fixes (`tests/test_git_utils.py`)
+
+1. Replaced broken `TemporaryDirectory().__enter__()` pattern with pytest's `tmp_path` fixture
+2. Added `_init_git_repo()` helper function that properly initializes git repos with user config and optional initial commit
+3. Fixed test expectations:
+   - `list_worktrees()` includes the main worktree
+   - `has_unpushed_commits()` returns `False` without a remote (nothing to compare against)
+4. Added new tests for edge cases
+
+## Test Results
+
+- **33 tests pass** (was 14 passing, 18 failing)
+- **96% code coverage** on git_utils.py
+- Full test suite: 66 tests passing
+<!-- SECTION:FINAL_SUMMARY:END -->
