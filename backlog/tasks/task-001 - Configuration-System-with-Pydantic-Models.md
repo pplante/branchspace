@@ -1,7 +1,7 @@
 ---
 id: TASK-001
 title: Configuration System with Pydantic Models
-status: In Progress
+status: Done
 assignee:
   - claude
 created_date: '2026-01-31 21:19'
@@ -102,3 +102,45 @@ Config discovery should search from current directory up to repo root.
 - `tests/__init__.py` - Test package init
 - `tests/test_config.py` - Comprehensive unit tests
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+## Summary
+
+Implemented the configuration system for branchspace using Pydantic models, providing type-safe parsing and validation of `branchspace.json` files.
+
+## Changes
+
+### New Files
+
+- **`src/branchspace/config.py`** - Configuration module with:
+  - `ContainerImageConfig` - Model for image-based container configuration
+  - `ContainerBuildConfig` - Model for Dockerfile-based container configuration  
+  - `BranchspaceConfig` - Main configuration model with all options and defaults matching README spec
+  - `get_git_root()` - Helper to find git repository root
+  - `find_config_file()` - Config discovery from cwd up to repo root
+  - `load_config()` - Load and validate configuration with graceful error handling
+  - `ConfigError` - Custom exception for config-related errors
+
+- **`tests/test_config.py`** - Comprehensive test suite with 33 tests covering:
+  - Container config models
+  - All default values matching README spec
+  - JSON parsing with camelCase and snake_case support
+  - Config file discovery logic
+  - Error handling for missing/invalid configs
+
+## Key Design Decisions
+
+- Uses Pydantic field aliases to support camelCase JSON keys while using snake_case in Python
+- Config discovery stops at git repository root to avoid reading configs from parent directories
+- Returns sensible defaults when no config file is found (fail-open for convenience)
+- Raises clear `ConfigError` with path and validation details for invalid configs
+- Ignores unknown fields for forward compatibility
+
+## Testing
+
+- 33 tests passing
+- 95% code coverage
+- Linting clean (ruff)
+<!-- SECTION:FINAL_SUMMARY:END -->
