@@ -1,0 +1,12 @@
+name: branchspace
+
+services:
+  tester:
+    build: .
+    env_file: .env
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: sleep infinity

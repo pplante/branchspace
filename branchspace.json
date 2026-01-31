@@ -1,0 +1,12 @@
+{
+  "project_name": "branchspace",
+  "worktree_copy_patterns": [".env"],
+  "worktree_copy_ignores": [],
+  "worktree_path_template": "$HOME/.branchspace/worktrees/$PROJECT_NAME/$BRANCH_NAME",
+  "post_create_cmd": ["uv sync --dev"],
+  "purge_on_remove": true,
+  "container_config": {
+    "image": "python:3.14"
+  },
+  "shell": "/bin/bash"
+}
