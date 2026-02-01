@@ -15,6 +15,8 @@ from branchspace.console import spinner
 from branchspace.console import success
 from branchspace.worktree_create import CreateWorktreeError
 from branchspace.worktree_create import create_worktrees
+from branchspace.worktree_cd import WorktreeLookupError
+from branchspace.worktree_cd import resolve_worktree_path
 from branchspace.worktree_list import build_worktree_list_table
 from branchspace.worktree_list import list_worktree_statuses
 
@@ -60,9 +62,16 @@ def rm() -> None:
 
 
 @main.command(help="Change to a worktree.")
-def cd() -> None:
+@click.argument("branch", required=False)
+def cd(branch: str | None) -> None:
     """Change to a worktree."""
-    click.echo("Not implemented yet.")
+    try:
+        resolved = resolve_worktree_path(branch)
+    except WorktreeLookupError as exc:
+        error(str(exc))
+        raise SystemExit(1) from exc
+
+    click.echo(str(resolved.path))
 
 
 @main.command(help="List worktrees.")

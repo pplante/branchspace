@@ -54,7 +54,6 @@ class TestMainCli:
         "command",
         [
             "rm",
-            "cd",
             "shell",
             "purge",
             "init",
@@ -88,3 +87,16 @@ class TestMainCli:
 
         assert result.exit_code != 0
         assert "Missing argument" in result.output
+
+    def test_cd_outputs_root(self, monkeypatch):
+        runner = CliRunner()
+
+        monkeypatch.setattr(
+            "branchspace.main_cli.resolve_worktree_path",
+            lambda branch=None: type("Resolved", (), {"path": "/repo"})(),
+        )
+
+        result = runner.invoke(main, ["cd"])
+
+        assert result.exit_code == 0
+        assert result.output.strip() == "/repo"
