@@ -50,10 +50,4 @@ Used in: worktreePathTemplate, postCreateCmd, terminalCommand
 - Added template substitution helper with strict missing-variable behavior and variable normalization.
 - Added template context mapping for BASE_PATH/WORKTREE_PATH/BRANCH_NAME/SOURCE_BRANCH.
 - Added tests for string/list substitutions and missing variables.
-
-- Added template substitution helper with strict missing-variable behavior and variable normalization.
-
-- Added template context mapping for BASE_PATH/WORKTREE_PATH/BRANCH_NAME/SOURCE_BRANCH.
-
-- Added tests for string/list substitutions and missing variables.
 <!-- SECTION:NOTES:END -->
