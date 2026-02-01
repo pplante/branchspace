@@ -1,9 +1,11 @@
 ---
 id: TASK-006
 title: Implement `branchspace create` Command
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@opencode'
 created_date: '2026-01-31 21:22'
+updated_date: '2026-02-01 19:35'
 labels:
   - cli
   - worktree
