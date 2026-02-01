@@ -29,10 +29,10 @@ Dependencies: click (already in pyproject.toml)
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 branchspace --help shows all commands
-- [ ] #2 branchspace --version shows current version
-- [ ] #3 All command placeholders registered
-- [ ] #4 CLI entrypoint works via `branchspace` command
+- [x] #1 branchspace --help shows all commands
+- [x] #2 branchspace --version shows current version
+- [x] #3 All command placeholders registered
+- [x] #4 CLI entrypoint works via `branchspace` command
 <!-- AC:END -->
 
 ## Implementation Plan
