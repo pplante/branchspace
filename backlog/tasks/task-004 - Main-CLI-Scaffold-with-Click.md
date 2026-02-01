@@ -49,8 +49,4 @@ Dependencies: click (already in pyproject.toml)
 <!-- SECTION:NOTES:BEGIN -->
 - Added Click-based CLI group with version option and placeholder subcommands.
 - Added CLI tests for help output, version flag, module entrypoint, and placeholder commands.
-
-- Added Click-based CLI group with version option and placeholder subcommands.
-
-- Added CLI tests for help output, version flag, module entrypoint, and placeholder commands.
 <!-- SECTION:NOTES:END -->
