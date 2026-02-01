@@ -37,14 +37,14 @@ Implement the main worktree creation command with full feature support.
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Creates worktree at path from worktreePathTemplate
-- [ ] #2 Copies files matching worktreeCopyPatterns
-- [ ] #3 Excludes files matching worktreeCopyIgnores
-- [ ] #4 Runs postCreateCmd in new worktree directory
-- [ ] #5 Runs terminalCommand if configured
-- [ ] #6 Supports creating multiple worktrees in one command
-- [ ] #7 Shows progress with Rich spinners
-- [ ] #8 Unit tests for create logic
+- [x] #1 Creates worktree at path from worktreePathTemplate
+- [x] #2 Copies files matching worktreeCopyPatterns
+- [x] #3 Excludes files matching worktreeCopyIgnores
+- [x] #4 Runs postCreateCmd in new worktree directory
+- [x] #5 Runs terminalCommand if configured
+- [x] #6 Supports creating multiple worktrees in one command
+- [x] #7 Shows progress with Rich spinners
+- [x] #8 Unit tests for create logic
 <!-- AC:END -->
 
 ## Implementation Plan
