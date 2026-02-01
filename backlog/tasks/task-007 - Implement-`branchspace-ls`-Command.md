@@ -57,3 +57,18 @@ Implement the worktree listing command with formatted output.
 - Wired `branchspace ls` to show a formatted table or a no-worktrees message.
 - Added unit tests for list status detection and CLI output behavior.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the `branchspace ls` command with Rich-formatted output.
+
+Changes:
+- Added worktree listing logic to collect current/dirty status and render a Rich table.
+- Added git status helper to include untracked files when determining dirty state.
+- Wired `branchspace ls` to show a formatted table or a no-worktrees message.
+- Added unit tests for list status detection and CLI output behavior.
+
+Tests:
+- pytest
+<!-- SECTION:FINAL_SUMMARY:END -->
