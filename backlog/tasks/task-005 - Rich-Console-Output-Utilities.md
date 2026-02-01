@@ -30,10 +30,10 @@ Dependencies: rich (already in pyproject.toml)
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Console helper functions for success/warning/error output
-- [ ] #2 Table formatting for worktree list
-- [ ] #3 Spinner context manager for async operations
-- [ ] #4 Consistent color scheme throughout
+- [x] #1 Console helper functions for success/warning/error output
+- [x] #2 Table formatting for worktree list
+- [x] #3 Spinner context manager for async operations
+- [x] #4 Consistent color scheme throughout
 <!-- AC:END -->
 
 ## Implementation Plan
