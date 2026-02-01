@@ -237,3 +237,20 @@ def load_config(path: Path | None = None) -> BranchspaceConfig:
             f"Invalid configuration in {path}:\n{error_details}",
             path=path,
         ) from e
+
+
+class TemplateContext(BaseModel):
+    """Template variables for expanding config strings."""
+
+    base_path: str
+    worktree_path: str
+    branch_name: str
+    source_branch: str
+
+    def as_mapping(self) -> dict[str, str]:
+        return {
+            "BASE_PATH": self.base_path,
+            "WORKTREE_PATH": self.worktree_path,
+            "BRANCH_NAME": self.branch_name,
+            "SOURCE_BRANCH": self.source_branch,
+        }

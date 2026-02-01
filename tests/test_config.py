@@ -15,6 +15,7 @@ from branchspace.config import BranchspaceConfig
 from branchspace.config import ConfigError
 from branchspace.config import ContainerBuildConfig
 from branchspace.config import ContainerImageConfig
+from branchspace.config import TemplateContext
 from branchspace.config import find_config_file
 from branchspace.config import get_git_root
 from branchspace.config import load_config
@@ -33,7 +34,7 @@ class TestContainerImageConfig:
         from pydantic import ValidationError
 
         with pytest.raises(ValidationError):
-            ContainerImageConfig()
+            ContainerImageConfig.model_validate({})
 
 
 class TestContainerBuildConfig:
@@ -364,3 +365,25 @@ class TestConfigError:
 
         assert error.path is None
         assert "test message" in str(error)
+
+
+class TestTemplateContext:
+    """Tests for template context mapping."""
+
+    def test_as_mapping(self):
+        """Test mapping exposes expected template keys."""
+        context = TemplateContext(
+            base_path="myproject",
+            worktree_path="/repo/worktrees/feature-auth",
+            branch_name="feature-auth",
+            source_branch="main",
+        )
+
+        mapping = context.as_mapping()
+
+        assert mapping == {
+            "BASE_PATH": "myproject",
+            "WORKTREE_PATH": "/repo/worktrees/feature-auth",
+            "BRANCH_NAME": "feature-auth",
+            "SOURCE_BRANCH": "main",
+        }
