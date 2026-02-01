@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-01 20:44'
+updated_date: '2026-02-01 20:53'
 labels:
   - cli
   - worktree
@@ -49,3 +49,17 @@ Implement the worktree listing command with formatted output.
 3. Wire `branchspace ls` command to use the list logic and handle empty/solo worktree cases.
 4. Add unit tests for table rows and status formatting (clean/dirty/current).
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added worktree list logic with current/dirty status detection and Rich table rendering.
+- Wired `branchspace ls` to show a formatted table or a no-worktrees message.
+- Added unit tests for list status detection and CLI output behavior.
+
+- Added worktree list logic with current/dirty status detection and Rich table rendering.
+
+- Wired `branchspace ls` to show a formatted table or a no-worktrees message.
+
+- Added unit tests for list status detection and CLI output behavior.
+<!-- SECTION:NOTES:END -->
