@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:19'
-updated_date: '2026-02-01 18:59'
+updated_date: '2026-02-01 19:03'
 labels:
   - infrastructure
 milestone: 'Phase 1: Core Infrastructure'
@@ -43,3 +43,17 @@ Used in: worktreePathTemplate, postCreateCmd, terminalCommand
 3. Add tests covering single string and list substitutions, missing variable handling, and mixed literals.
 4. Wire helper into command flows that consume these templates, ensuring existing behavior preserved.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added template substitution helper with strict missing-variable behavior and variable normalization.
+- Added template context mapping for BASE_PATH/WORKTREE_PATH/BRANCH_NAME/SOURCE_BRANCH.
+- Added tests for string/list substitutions and missing variables.
+
+- Added template substitution helper with strict missing-variable behavior and variable normalization.
+
+- Added template context mapping for BASE_PATH/WORKTREE_PATH/BRANCH_NAME/SOURCE_BRANCH.
+
+- Added tests for string/list substitutions and missing variables.
+<!-- SECTION:NOTES:END -->
