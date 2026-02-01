@@ -1,7 +1,7 @@
 ---
 id: TASK-006
 title: Implement `branchspace create` Command
-status: In Progress
+status: Done
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
