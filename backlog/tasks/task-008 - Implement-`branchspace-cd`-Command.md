@@ -57,10 +57,4 @@ Implement the directory change helper command.
 - Added worktree path resolver for `branchspace cd` including git root fallback and missing-branch errors.
 - Wired `branchspace cd` to print resolved path for shell integration.
 - Added unit tests for root resolution and branch lookup behavior.
-
-- Added worktree path resolver for `branchspace cd` including git root fallback and missing-branch errors.
-
-- Wired `branchspace cd` to print resolved path for shell integration.
-
-- Added unit tests for root resolution and branch lookup behavior.
 <!-- SECTION:NOTES:END -->
