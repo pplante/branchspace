@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-01 21:02'
+updated_date: '2026-02-01 21:05'
 labels:
   - cli
   - worktree
@@ -56,3 +56,17 @@ Implement worktree removal with comprehensive safety checks.
 3. Implement purgeOnRemove behavior to delete branch and run any cleanup (Docker purge hook if available).
 4. Wire `branchspace rm` command to iterate branches and report results; add unit tests for safety and removal behavior.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added worktree removal logic with protected-branch checks, checked-out-elsewhere detection, and dirty/unpushed confirmations.
+- Wired `branchspace rm` to execute removals and report results.
+- Added unit tests for protected branches, checked-out-elsewhere handling, and dirty confirmation flow.
+
+- Added worktree removal logic with protected-branch checks, checked-out-elsewhere detection, and dirty/unpushed confirmations.
+
+- Wired `branchspace rm` to execute removals and report results.
+
+- Added unit tests for protected branches, checked-out-elsewhere handling, and dirty confirmation flow.
+<!-- SECTION:NOTES:END -->
