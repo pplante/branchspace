@@ -62,10 +62,4 @@ Implement the main worktree creation command with full feature support.
 - Added worktree creation module with template resolution, file copy, post-create hooks, and terminal command support.
 - Wired create command to config loading, worktree creation, and Rich spinner output.
 - Added unit tests for template path resolution, copy ignore behavior, and CLI argument handling.
-
-- Added worktree creation module with template resolution, file copy, post-create hooks, and terminal command support.
-
-- Wired create command to config loading, worktree creation, and Rich spinner output.
-
-- Added unit tests for template path resolution, copy ignore behavior, and CLI argument handling.
 <!-- SECTION:NOTES:END -->
