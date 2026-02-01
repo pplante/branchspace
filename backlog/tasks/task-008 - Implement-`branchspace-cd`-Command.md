@@ -42,3 +42,11 @@ Implement the directory change helper command.
 - [ ] #4 Works with shell integration to perform actual cd
 - [ ] #5 Unit tests for path resolution
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Add a worktree lookup helper using git utilities to resolve worktree path by branch name (and git root for default).
+2. Implement `branchspace cd` command to output the resolved path or an error message with non-zero exit.
+3. Add unit tests for branch lookup, git root fallback, and error cases (missing branch).
+<!-- SECTION:PLAN:END -->
