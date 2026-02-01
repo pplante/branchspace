@@ -55,10 +55,4 @@ Implement command to display current configuration.
 - Added config display helpers with Rich table rendering and config path/defaults notice.
 - Wired `branchspace config` command to load and render configuration.
 - Added unit tests for config table output and CLI wiring.
-
-- Added config display helpers with Rich table rendering and config path/defaults notice.
-
-- Wired `branchspace config` command to load and render configuration.
-
-- Added unit tests for config table output and CLI wiring.
 <!-- SECTION:NOTES:END -->
