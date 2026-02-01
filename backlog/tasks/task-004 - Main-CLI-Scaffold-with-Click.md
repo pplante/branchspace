@@ -50,3 +50,17 @@ Dependencies: click (already in pyproject.toml)
 - Added Click-based CLI group with version option and placeholder subcommands.
 - Added CLI tests for help output, version flag, module entrypoint, and placeholder commands.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Scaffolded the Click-based branchspace CLI with version support and placeholder commands.
+
+Changes:
+- Added `branchspace.main_cli` Click group with `--version` and help text.
+- Registered placeholder subcommands for create/rm/cd/ls/shell/purge/init/config/shell-integration.
+- Added CLI tests for help output, version flag, module entrypoint, and placeholder command behavior.
+
+Tests:
+- pytest
+<!-- SECTION:FINAL_SUMMARY:END -->
