@@ -1,9 +1,11 @@
 ---
 id: TASK-003
 title: Template Variable Engine
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@opencode'
 created_date: '2026-01-31 21:19'
+updated_date: '2026-02-01 18:59'
 labels:
   - infrastructure
 milestone: 'Phase 1: Core Infrastructure'
