@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:19'
-updated_date: '2026-02-01 19:03'
+updated_date: '2026-02-01 19:04'
 labels:
   - infrastructure
 milestone: 'Phase 1: Core Infrastructure'
@@ -51,3 +51,17 @@ Used in: worktreePathTemplate, postCreateCmd, terminalCommand
 - Added template context mapping for BASE_PATH/WORKTREE_PATH/BRANCH_NAME/SOURCE_BRANCH.
 - Added tests for string/list substitutions and missing variables.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented template-variable substitution utilities for branchspace config usage.
+
+Changes:
+- Added `substitute_template` with strict missing-variable handling plus variable normalization for $BASE_PATH/$WORKTREE_PATH/$BRANCH_NAME/$SOURCE_BRANCH.
+- Introduced `TemplateContext` to provide consistent mapping for config-driven templates.
+- Added unit tests covering string and list substitution paths and missing variable behavior.
+
+Tests:
+- pytest
+<!-- SECTION:FINAL_SUMMARY:END -->
