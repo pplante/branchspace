@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-01 21:31'
+updated_date: '2026-02-01 22:11'
 labels:
   - cli
   - shell
@@ -64,3 +64,17 @@ branchspace() {
 3. Wire `branchspace shell-integration` to prompt via questionary, update selected shells, or print manual instructions.
 4. Add unit tests for function generation and idempotent detection.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added shell integration helpers for detecting rc files, generating wrapper function, and idempotent appends.
+- Wired `branchspace shell-integration` with questionary selection and manual instructions fallback.
+- Added unit tests for function markers and idempotent append behavior.
+
+- Added shell integration helpers for detecting rc files, generating wrapper function, and idempotent appends.
+
+- Wired `branchspace shell-integration` with questionary selection and manual instructions fallback.
+
+- Added unit tests for function markers and idempotent append behavior.
+<!-- SECTION:NOTES:END -->
