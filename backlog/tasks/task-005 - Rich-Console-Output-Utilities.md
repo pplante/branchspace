@@ -1,11 +1,11 @@
 ---
 id: TASK-005
 title: Rich Console Output Utilities
-status: In Progress
+status: Done
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:19'
-updated_date: '2026-02-01 19:23'
+updated_date: '2026-02-01 19:24'
 labels:
   - infrastructure
   - cli
