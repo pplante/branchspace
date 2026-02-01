@@ -34,3 +34,12 @@ Dependencies: click (already in pyproject.toml)
 - [ ] #3 All command placeholders registered
 - [ ] #4 CLI entrypoint works via `branchspace` command
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Locate current CLI entry points and existing package layout; confirm how __main__.py calls the CLI.
+2. Implement a Click group in a new main_cli module with version option pulling from branchspace.__init__.__version__.
+3. Register placeholder subcommands (create, rm, cd, ls, shell, purge, init, config, shell-integration) with clear help text.
+4. Add tests to validate --help shows commands and --version output, and that the entrypoint works via invoking the CLI module.
+<!-- SECTION:PLAN:END -->
