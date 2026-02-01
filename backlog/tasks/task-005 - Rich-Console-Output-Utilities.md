@@ -50,8 +50,4 @@ Dependencies: rich (already in pyproject.toml)
 <!-- SECTION:NOTES:BEGIN -->
 - Added Rich console utilities with a shared theme, message helpers, worktree table builder, and spinner context manager.
 - Added unit tests for console singleton, messaging helpers, table configuration, and spinner behavior.
-
-- Added Rich console utilities with a shared theme, message helpers, worktree table builder, and spinner context manager.
-
-- Added unit tests for console singleton, messaging helpers, table configuration, and spinner behavior.
 <!-- SECTION:NOTES:END -->
