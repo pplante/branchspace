@@ -55,3 +55,12 @@ branchspace() {
 - [ ] #5 Shows instructions for manual installation if user declines
 - [ ] #6 Unit tests for shell function generation
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Add shell integration helper to generate the wrapper function and detect available rc files (bash/zsh).
+2. Implement idempotent append logic that checks for an existing marker before writing.
+3. Wire `branchspace shell-integration` to prompt via questionary, update selected shells, or print manual instructions.
+4. Add unit tests for function generation and idempotent detection.
+<!-- SECTION:PLAN:END -->
