@@ -53,7 +53,6 @@ class TestMainCli:
     @pytest.mark.parametrize(
         "command",
         [
-            "create",
             "rm",
             "cd",
             "ls",
@@ -70,3 +69,10 @@ class TestMainCli:
 
         assert result.exit_code == 0
         assert "Not implemented yet." in result.output
+
+    def test_create_requires_branch_argument(self):
+        runner = CliRunner()
+        result = runner.invoke(main, ["create"])
+
+        assert result.exit_code != 0
+        assert "Missing argument" in result.output

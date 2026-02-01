@@ -2,9 +2,19 @@
 
 from __future__ import annotations
 
+import subprocess
+
 import click
 
 from branchspace import __version__
+from branchspace.config import ConfigError
+from branchspace.config import load_config
+from branchspace.console import error
+from branchspace.console import info
+from branchspace.console import spinner
+from branchspace.console import success
+from branchspace.worktree_create import CreateWorktreeError
+from branchspace.worktree_create import create_worktrees
 
 
 @click.group("branchspace", help="Manage git worktrees and environments.")
@@ -14,9 +24,31 @@ def main() -> None:
 
 
 @main.command(help="Create a new worktree.")
-def create() -> None:
+@click.argument("branch", nargs=-1, required=True)
+def create(branch: tuple[str, ...]) -> None:
     """Create a new worktree."""
-    click.echo("Not implemented yet.")
+    try:
+        config = load_config()
+    except ConfigError as exc:
+        error(str(exc))
+        raise SystemExit(1) from exc
+
+    try:
+        with spinner("Creating worktrees"):
+            results = create_worktrees(list(branch), config)
+    except CreateWorktreeError as exc:
+        error(str(exc))
+        raise SystemExit(1) from exc
+    except OSError as exc:
+        error(str(exc))
+        raise SystemExit(1) from exc
+    except subprocess.CalledProcessError as exc:
+        error(exc.stderr.strip() if exc.stderr else str(exc))
+        raise SystemExit(1) from exc
+
+    for created in results:
+        success(f"Created {created.branch} at {created.path}")
+    info("Worktrees ready.")
 
 
 @main.command(help="Remove a worktree.")
