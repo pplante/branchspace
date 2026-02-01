@@ -38,14 +38,14 @@ Implement worktree removal with comprehensive safety checks.
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Removes worktree directory
-- [ ] #2 Blocks removal of protected branches with error message
-- [ ] #3 Prompts for confirmation if uncommitted changes
-- [ ] #4 Prompts for confirmation if unpushed commits
-- [ ] #5 Errors if branch is checked out elsewhere
-- [ ] #6 Respects purgeOnRemove config to delete branch
-- [ ] #7 Supports removing multiple worktrees
-- [ ] #8 Unit tests for rm logic and safety checks
+- [x] #1 Removes worktree directory
+- [x] #2 Blocks removal of protected branches with error message
+- [x] #3 Prompts for confirmation if uncommitted changes
+- [x] #4 Prompts for confirmation if unpushed commits
+- [x] #5 Errors if branch is checked out elsewhere
+- [x] #6 Respects purgeOnRemove config to delete branch
+- [x] #7 Supports removing multiple worktrees
+- [x] #8 Unit tests for rm logic and safety checks
 <!-- AC:END -->
 
 ## Implementation Plan
