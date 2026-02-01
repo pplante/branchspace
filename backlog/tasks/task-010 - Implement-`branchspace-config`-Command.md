@@ -40,3 +40,11 @@ Implement command to display current configuration.
 - [ ] #4 Formats output nicely with Rich
 - [ ] #5 Unit tests for config display
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Add a config display helper that loads branchspace.json (if present) and returns a structured view of effective values.
+2. Render config values with Rich (table or panel) and include config path or defaults notice.
+3. Wire `branchspace config` to the display helper and add unit tests for explicit vs default output.
+<!-- SECTION:PLAN:END -->
