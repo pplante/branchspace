@@ -11,6 +11,7 @@ import pytest
 from click.testing import CliRunner
 
 from branchspace import __version__
+from branchspace.config import BranchspaceConfig
 from branchspace.main_cli import main
 
 
@@ -56,7 +57,6 @@ class TestMainCli:
             "shell",
             "purge",
             "init",
-            "config",
             "shell-integration",
         ],
     )
@@ -106,3 +106,16 @@ class TestMainCli:
 
         assert result.exit_code == 0
         assert result.output.strip() == "/repo"
+
+    def test_config_renders_defaults(self, monkeypatch):
+        runner = CliRunner()
+
+        monkeypatch.setattr(
+            "branchspace.main_cli.load_config_view",
+            lambda: type("View", (), {"config": BranchspaceConfig(), "config_path": None})(),
+        )
+        monkeypatch.setattr("branchspace.main_cli.render_config", lambda _view: None)
+
+        result = runner.invoke(main, ["config"])
+
+        assert result.exit_code == 0

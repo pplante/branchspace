@@ -9,6 +9,8 @@ import click
 from branchspace import __version__
 from branchspace.config import ConfigError
 from branchspace.config import load_config
+from branchspace.config_display import load_config_view
+from branchspace.config_display import render_config
 from branchspace.console import error
 from branchspace.console import info
 from branchspace.console import spinner
@@ -136,7 +138,13 @@ def init() -> None:
 @main.command(name="config", help="Show or edit configuration.")
 def config_cmd() -> None:
     """Show or edit configuration."""
-    click.echo("Not implemented yet.")
+    try:
+        view = load_config_view()
+    except ConfigError as exc:
+        error(str(exc))
+        raise SystemExit(1) from exc
+
+    render_config(view)
 
 
 @main.command(name="shell-integration", help="Install shell integration.")
