@@ -1,9 +1,11 @@
 ---
 id: TASK-009
 title: Implement `branchspace rm` Command
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@opencode'
 created_date: '2026-01-31 21:22'
+updated_date: '2026-02-01 21:01'
 labels:
   - cli
   - worktree
