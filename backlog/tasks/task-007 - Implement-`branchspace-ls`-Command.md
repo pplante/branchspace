@@ -34,11 +34,11 @@ Implement the worktree listing command with formatted output.
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Displays all worktrees in a formatted table
-- [ ] #2 Shows branch name, path, and dirty/clean status
-- [ ] #3 Highlights current worktree
-- [ ] #4 Handles repos with no additional worktrees gracefully
-- [ ] #5 Unit tests for list logic
+- [x] #1 Displays all worktrees in a formatted table
+- [x] #2 Shows branch name, path, and dirty/clean status
+- [x] #3 Highlights current worktree
+- [x] #4 Handles repos with no additional worktrees gracefully
+- [x] #5 Unit tests for list logic
 <!-- AC:END -->
 
 ## Implementation Plan
