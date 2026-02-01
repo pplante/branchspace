@@ -53,7 +53,6 @@ class TestMainCli:
     @pytest.mark.parametrize(
         "command",
         [
-            "rm",
             "shell",
             "purge",
             "init",
@@ -84,6 +83,13 @@ class TestMainCli:
     def test_create_requires_branch_argument(self):
         runner = CliRunner()
         result = runner.invoke(main, ["create"])
+
+        assert result.exit_code != 0
+        assert "Missing argument" in result.output
+
+    def test_rm_requires_branch_argument(self):
+        runner = CliRunner()
+        result = runner.invoke(main, ["rm"])
 
         assert result.exit_code != 0
         assert "Missing argument" in result.output

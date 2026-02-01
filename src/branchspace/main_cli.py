@@ -17,6 +17,8 @@ from branchspace.worktree_create import CreateWorktreeError
 from branchspace.worktree_create import create_worktrees
 from branchspace.worktree_cd import WorktreeLookupError
 from branchspace.worktree_cd import resolve_worktree_path
+from branchspace.worktree_remove import WorktreeRemoveError
+from branchspace.worktree_remove import remove_worktrees
 from branchspace.worktree_list import build_worktree_list_table
 from branchspace.worktree_list import list_worktree_statuses
 
@@ -56,9 +58,29 @@ def create(branch: tuple[str, ...]) -> None:
 
 
 @main.command(help="Remove a worktree.")
-def rm() -> None:
+@click.argument("branch", nargs=-1, required=True)
+def rm(branch: tuple[str, ...]) -> None:
     """Remove a worktree."""
-    click.echo("Not implemented yet.")
+    try:
+        config = load_config()
+    except ConfigError as exc:
+        error(str(exc))
+        raise SystemExit(1) from exc
+
+    try:
+        results = remove_worktrees(list(branch), config)
+    except WorktreeRemoveError as exc:
+        error(str(exc))
+        raise SystemExit(1) from exc
+    except subprocess.CalledProcessError as exc:
+        error(exc.stderr.strip() if exc.stderr else str(exc))
+        raise SystemExit(1) from exc
+
+    for result in results:
+        if result.removed:
+            success(f"Removed {result.branch} at {result.path}")
+        else:
+            info(f"Skipped {result.branch} at {result.path}")
 
 
 @main.command(help="Change to a worktree.")
