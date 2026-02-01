@@ -58,3 +58,17 @@ Implement the directory change helper command.
 - Wired `branchspace cd` to print resolved path for shell integration.
 - Added unit tests for root resolution and branch lookup behavior.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the `branchspace cd` path resolver and CLI command.
+
+Changes:
+- Added `resolve_worktree_path` helper to return the git root or a branch worktree path with clear errors when missing.
+- Wired `branchspace cd` to output the resolved path for shell integration.
+- Added unit tests for root resolution, branch lookup, and missing-branch errors.
+
+Tests:
+- pytest
+<!-- SECTION:FINAL_SUMMARY:END -->
