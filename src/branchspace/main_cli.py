@@ -15,6 +15,8 @@ from branchspace.console import spinner
 from branchspace.console import success
 from branchspace.worktree_create import CreateWorktreeError
 from branchspace.worktree_create import create_worktrees
+from branchspace.worktree_list import build_worktree_list_table
+from branchspace.worktree_list import list_worktree_statuses
 
 
 @click.group("branchspace", help="Manage git worktrees and environments.")
@@ -66,7 +68,20 @@ def cd() -> None:
 @main.command(help="List worktrees.")
 def ls() -> None:
     """List worktrees."""
-    click.echo("Not implemented yet.")
+    try:
+        statuses = list_worktree_statuses()
+    except subprocess.CalledProcessError as exc:
+        error(exc.stderr.strip() if exc.stderr else str(exc))
+        raise SystemExit(1) from exc
+
+    if not statuses:
+        info("No worktrees found.")
+        return
+
+    table = build_worktree_list_table(statuses)
+    from branchspace.console import get_console
+
+    get_console().print(table)
 
 
 @main.command(help="Open an interactive shell.")

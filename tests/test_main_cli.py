@@ -55,7 +55,6 @@ class TestMainCli:
         [
             "rm",
             "cd",
-            "ls",
             "shell",
             "purge",
             "init",
@@ -69,6 +68,19 @@ class TestMainCli:
 
         assert result.exit_code == 0
         assert "Not implemented yet." in result.output
+
+    def test_ls_outputs_table(self, monkeypatch):
+        runner = CliRunner()
+
+        monkeypatch.setattr(
+            "branchspace.main_cli.list_worktree_statuses",
+            lambda _path=None: [],
+        )
+
+        result = runner.invoke(main, ["ls"])
+
+        assert result.exit_code == 0
+        assert "No worktrees found" in result.output
 
     def test_create_requires_branch_argument(self):
         runner = CliRunner()

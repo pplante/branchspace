@@ -290,6 +290,19 @@ def has_uncommitted_changes(path: Optional[Path] = None) -> bool:
         return False
 
 
+def has_uncommitted_changes_with_untracked(path: Optional[Path] = None) -> bool:
+    """Check if there are uncommitted or untracked changes in the repository."""
+    try:
+        result = _run_git_command(
+            ["status", "--porcelain"],
+            cwd=path,
+            capture_output=True,
+        )
+        return bool(result.stdout.strip())
+    except subprocess.CalledProcessError:
+        return False
+
+
 def has_unpushed_commits(path: Optional[Path] = None) -> bool:
     """Check if there are commits that haven't been pushed to the remote.
 
