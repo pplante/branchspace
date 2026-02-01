@@ -56,10 +56,4 @@ Implement the worktree listing command with formatted output.
 - Added worktree list logic with current/dirty status detection and Rich table rendering.
 - Wired `branchspace ls` to show a formatted table or a no-worktrees message.
 - Added unit tests for list status detection and CLI output behavior.
-
-- Added worktree list logic with current/dirty status detection and Rich table rendering.
-
-- Wired `branchspace ls` to show a formatted table or a no-worktrees message.
-
-- Added unit tests for list status detection and CLI output behavior.
 <!-- SECTION:NOTES:END -->
