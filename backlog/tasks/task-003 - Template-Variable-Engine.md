@@ -34,3 +34,12 @@ Used in: worktreePathTemplate, postCreateCmd, terminalCommand
 - [ ] #3 Missing variables handled gracefully (or error)
 - [ ] #4 Unit tests for template substitution
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Locate config parsing/templating usage for worktreePathTemplate, postCreateCmd, terminalCommand to align substitution points.
+2. Implement a template substitution helper that replaces $BASE_PATH, $WORKTREE_PATH, $BRANCH_NAME, $SOURCE_BRANCH for both strings and list entries, with defined behavior for unknown variables.
+3. Add tests covering single string and list substitutions, missing variable handling, and mixed literals.
+4. Wire helper into command flows that consume these templates, ensuring existing behavior preserved.
+<!-- SECTION:PLAN:END -->
