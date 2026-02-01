@@ -36,11 +36,11 @@ Implement the directory change helper command.
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Outputs worktree path for given branch name
-- [ ] #2 Outputs git root when no branch specified
-- [ ] #3 Returns error if branch/worktree not found
-- [ ] #4 Works with shell integration to perform actual cd
-- [ ] #5 Unit tests for path resolution
+- [x] #1 Outputs worktree path for given branch name
+- [x] #2 Outputs git root when no branch specified
+- [x] #3 Returns error if branch/worktree not found
+- [x] #4 Works with shell integration to perform actual cd
+- [x] #5 Unit tests for path resolution
 <!-- AC:END -->
 
 ## Implementation Plan
