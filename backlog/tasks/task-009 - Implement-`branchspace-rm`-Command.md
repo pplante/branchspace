@@ -64,3 +64,17 @@ Implement worktree removal with comprehensive safety checks.
 - Wired `branchspace rm` to execute removals and report results.
 - Added unit tests for protected branches, checked-out-elsewhere handling, and dirty confirmation flow.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the `branchspace rm` command with safety checks and confirmations.
+
+Changes:
+- Added worktree removal logic with protected-branch enforcement, checked-out-elsewhere detection, and confirmation prompts for dirty/unpushed states.
+- Wired `branchspace rm` to load config, remove one or more worktrees, and report success or skip states.
+- Added unit tests for protected branch, checked-out-elsewhere error, and dirty confirmation flow.
+
+Tests:
+- pytest
+<!-- SECTION:FINAL_SUMMARY:END -->
