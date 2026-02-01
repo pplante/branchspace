@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:19'
-updated_date: '2026-02-01 19:15'
+updated_date: '2026-02-01 19:17'
 labels:
   - infrastructure
   - cli
@@ -43,3 +43,14 @@ Dependencies: click (already in pyproject.toml)
 3. Register placeholder subcommands (create, rm, cd, ls, shell, purge, init, config, shell-integration) with clear help text.
 4. Add tests to validate --help shows commands and --version output, and that the entrypoint works via invoking the CLI module.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added Click-based CLI group with version option and placeholder subcommands.
+- Added CLI tests for help output, version flag, module entrypoint, and placeholder commands.
+
+- Added Click-based CLI group with version option and placeholder subcommands.
+
+- Added CLI tests for help output, version flag, module entrypoint, and placeholder commands.
+<!-- SECTION:NOTES:END -->
