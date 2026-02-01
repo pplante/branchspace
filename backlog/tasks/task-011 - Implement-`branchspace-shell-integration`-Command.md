@@ -72,3 +72,17 @@ branchspace() {
 - Wired `branchspace shell-integration` with questionary selection and manual instructions fallback.
 - Added unit tests for function markers and idempotent append behavior.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented shell integration support for the CLI.
+
+Changes:
+- Added helpers to detect shell rc files, generate the wrapper function, and append integration idempotently.
+- Wired `branchspace shell-integration` to prompt via questionary, update selected rc files, or print manual instructions.
+- Added unit tests for integration snippet generation and idempotent append behavior.
+
+Tests:
+- pytest
+<!-- SECTION:FINAL_SUMMARY:END -->
