@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-01 19:35'
+updated_date: '2026-02-01 19:50'
 labels:
   - cli
   - worktree
@@ -55,3 +55,17 @@ Implement the main worktree creation command with full feature support.
 3. Integrate Rich console helpers/spinner for progress output and surface errors consistently.
 4. Wire the logic into the Click create command and add unit tests for create logic and CLI entrypoint.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added worktree creation module with template resolution, file copy, post-create hooks, and terminal command support.
+- Wired create command to config loading, worktree creation, and Rich spinner output.
+- Added unit tests for template path resolution, copy ignore behavior, and CLI argument handling.
+
+- Added worktree creation module with template resolution, file copy, post-create hooks, and terminal command support.
+
+- Wired create command to config loading, worktree creation, and Rich spinner output.
+
+- Added unit tests for template path resolution, copy ignore behavior, and CLI argument handling.
+<!-- SECTION:NOTES:END -->
