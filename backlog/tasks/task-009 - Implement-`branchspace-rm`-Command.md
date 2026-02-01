@@ -63,10 +63,4 @@ Implement worktree removal with comprehensive safety checks.
 - Added worktree removal logic with protected-branch checks, checked-out-elsewhere detection, and dirty/unpushed confirmations.
 - Wired `branchspace rm` to execute removals and report results.
 - Added unit tests for protected branches, checked-out-elsewhere handling, and dirty confirmation flow.
-
-- Added worktree removal logic with protected-branch checks, checked-out-elsewhere detection, and dirty/unpushed confirmations.
-
-- Wired `branchspace rm` to execute removals and report results.
-
-- Added unit tests for protected branches, checked-out-elsewhere handling, and dirty confirmation flow.
 <!-- SECTION:NOTES:END -->
