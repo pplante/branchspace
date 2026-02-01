@@ -71,10 +71,4 @@ branchspace() {
 - Added shell integration helpers for detecting rc files, generating wrapper function, and idempotent appends.
 - Wired `branchspace shell-integration` with questionary selection and manual instructions fallback.
 - Added unit tests for function markers and idempotent append behavior.
-
-- Added shell integration helpers for detecting rc files, generating wrapper function, and idempotent appends.
-
-- Wired `branchspace shell-integration` with questionary selection and manual instructions fallback.
-
-- Added unit tests for function markers and idempotent append behavior.
 <!-- SECTION:NOTES:END -->
