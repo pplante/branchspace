@@ -48,12 +48,12 @@ branchspace() {
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Detects installed shells (bash, zsh)
-- [ ] #2 Generates shell function that wraps branchspace cd
-- [ ] #3 Prompts user to select which shell configs to update
-- [ ] #4 Appends function to .bashrc/.zshrc safely (idempotent)
-- [ ] #5 Shows instructions for manual installation if user declines
-- [ ] #6 Unit tests for shell function generation
+- [x] #1 Detects installed shells (bash, zsh)
+- [x] #2 Generates shell function that wraps branchspace cd
+- [x] #3 Prompts user to select which shell configs to update
+- [x] #4 Appends function to .bashrc/.zshrc safely (idempotent)
+- [x] #5 Shows instructions for manual installation if user declines
+- [x] #6 Unit tests for shell function generation
 <!-- AC:END -->
 
 ## Implementation Plan
