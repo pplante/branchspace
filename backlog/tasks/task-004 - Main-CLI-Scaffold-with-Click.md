@@ -1,9 +1,11 @@
 ---
 id: TASK-004
 title: Main CLI Scaffold with Click
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@opencode'
 created_date: '2026-01-31 21:19'
+updated_date: '2026-02-01 19:15'
 labels:
   - infrastructure
   - cli
