@@ -29,10 +29,10 @@ Used in: worktreePathTemplate, postCreateCmd, terminalCommand
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 All 4 template variables work correctly
-- [ ] #2 Variables substitute in strings and lists of strings
-- [ ] #3 Missing variables handled gracefully (or error)
-- [ ] #4 Unit tests for template substitution
+- [x] #1 All 4 template variables work correctly
+- [x] #2 Variables substitute in strings and lists of strings
+- [x] #3 Missing variables handled gracefully (or error)
+- [x] #4 Unit tests for template substitution
 <!-- AC:END -->
 
 ## Implementation Plan
