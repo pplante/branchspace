@@ -40,3 +40,12 @@ Implement the worktree listing command with formatted output.
 - [ ] #4 Handles repos with no additional worktrees gracefully
 - [ ] #5 Unit tests for list logic
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Extend git utilities or add list helper to gather worktrees and dirty status plus current worktree identification.
+2. Implement list logic that builds a Rich table using console helpers, including current-worktree highlighting.
+3. Wire `branchspace ls` command to use the list logic and handle empty/solo worktree cases.
+4. Add unit tests for table rows and status formatting (clean/dirty/current).
+<!-- SECTION:PLAN:END -->
