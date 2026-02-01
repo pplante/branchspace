@@ -34,11 +34,11 @@ Implement command to display current configuration.
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Displays all configuration values
-- [ ] #2 Shows defaults for missing values
-- [ ] #3 Indicates config file path or 'using defaults'
-- [ ] #4 Formats output nicely with Rich
-- [ ] #5 Unit tests for config display
+- [x] #1 Displays all configuration values
+- [x] #2 Shows defaults for missing values
+- [x] #3 Indicates config file path or 'using defaults'
+- [x] #4 Formats output nicely with Rich
+- [x] #5 Unit tests for config display
 <!-- AC:END -->
 
 ## Implementation Plan
