@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-01 21:01'
+updated_date: '2026-02-01 21:02'
 labels:
   - cli
   - worktree
@@ -47,3 +47,12 @@ Implement worktree removal with comprehensive safety checks.
 - [ ] #7 Supports removing multiple worktrees
 - [ ] #8 Unit tests for rm logic and safety checks
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Add worktree removal logic module: resolve worktree paths, enforce protected branch rules, and detect branch checked out in other worktrees.
+2. Integrate safety checks for uncommitted/unpushed changes with confirmation prompts (using questionary/rich as available).
+3. Implement purgeOnRemove behavior to delete branch and run any cleanup (Docker purge hook if available).
+4. Wire `branchspace rm` command to iterate branches and report results; add unit tests for safety and removal behavior.
+<!-- SECTION:PLAN:END -->
