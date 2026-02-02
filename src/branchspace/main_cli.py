@@ -259,17 +259,21 @@ def agents() -> None:
 
     if should_install_skill:
         scope_choices = [
-            "Project scope (.skills/ - committed with repo)",
-            "Global scope (~/.skills/ - available everywhere)",
+            questionary.Choice(
+                title="Project scope (.skills/ - committed with repo)",
+                value="project",
+            ),
+            questionary.Choice(
+                title="Global scope (~/.skills/ - available everywhere)",
+                value="global",
+            ),
         ]
-        scope_selection = questionary.select(
+        scope_key = questionary.select(
             "Where should the skill be installed?",
             choices=scope_choices,
         ).unsafe_ask()
 
-        if scope_selection is not None:
-            scope_key = "project" if "Project" in scope_selection else "global"
-
+        if scope_key is not None:
             # Check if already installed
             if is_skill_installed(scope_key):
                 update_mode = questionary.select(
