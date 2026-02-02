@@ -25,7 +25,7 @@ from branchspace.git_utils import remove_worktree
 
 def _init_git_repo(path: Path, with_commit: bool = False) -> None:
     """Initialize a git repository with optional initial commit."""
-    subprocess.run(["git", "init"], cwd=path, capture_output=True, check=True)
+    subprocess.run(["git", "init", "-b", "main"], cwd=path, capture_output=True, check=True)
     subprocess.run(
         ["git", "config", "user.email", "test@example.com"],
         cwd=path,
