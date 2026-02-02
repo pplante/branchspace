@@ -28,6 +28,8 @@ from branchspace.shell_integration import append_integration
 from branchspace.shell_integration import build_shell_function
 from branchspace.shell_integration import detect_shell_rc_files
 from branchspace.shell_integration import render_manual_instructions
+from branchspace.skill import install_skill
+from branchspace.skill import is_skill_installed
 from branchspace.worktree_cd import WorktreeLookupError
 from branchspace.worktree_cd import resolve_worktree_path
 from branchspace.worktree_create import CreateWorktreeError
@@ -248,6 +250,41 @@ def agents() -> None:
     if not selection:
         info("No agents selected.")
         return
+
+    # Ask about skill installation
+    should_install_skill = questionary.confirm(
+        "Install the Branchspace Agent Skill for these agents?",
+        default=True,
+    ).unsafe_ask()
+
+    if should_install_skill:
+        scope_choices = [
+            "Project scope (.skills/ - committed with repo)",
+            "Global scope (~/.skills/ - available everywhere)",
+        ]
+        scope_selection = questionary.select(
+            "Where should the skill be installed?",
+            choices=scope_choices,
+        ).unsafe_ask()
+
+        if scope_selection is not None:
+            scope_key = "project" if "Project" in scope_selection else "global"
+
+            # Check if already installed
+            if is_skill_installed(scope_key):
+                update_mode = questionary.select(
+                    f"Skill already exists at {scope_key} scope. What would you like to do?",
+                    choices=["Update", "Skip"],
+                ).unsafe_ask()
+
+                if update_mode == "Skip":
+                    info("Skipped skill installation.")
+                else:
+                    skill_path = install_skill(scope_key)
+                    success(f"Updated skill at {skill_path}")
+            else:
+                skill_path = install_skill(scope_key)
+                success(f"Installed skill at {skill_path}")
 
     output_target = questionary.select(
         "Output instructions to:",
