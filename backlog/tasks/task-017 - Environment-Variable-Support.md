@@ -56,3 +56,17 @@ branchspace create feature-auth  # Creates in $HOME/my-worktrees/...
 - Added BRANCHSPACE_BASE override in config load and updated default worktree path template.
 - Documented env var in CLI help and added unit tests for env handling.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added BRANCHSPACE_BASE support for worktree location overrides.
+
+Changes:
+- Updated default worktree path template to $HOME/worktrees and applied env var overrides during config load.
+- Added env var mention to CLI help text.
+- Added unit tests for BRANCHSPACE_BASE handling.
+
+Tests:
+- pytest
+<!-- SECTION:FINAL_SUMMARY:END -->
