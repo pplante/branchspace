@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:23'
-updated_date: '2026-02-02 01:57'
+updated_date: '2026-02-02 01:58'
 labels:
   - cli
   - config
@@ -44,3 +44,12 @@ Implement automatic project detection and configuration generation.
 - [ ] #5 Detects project type (Node.js, Python) for smart defaults
 - [ ] #6 Unit tests for detection logic
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Add project detection helper to scan for Dockerfiles and language indicators (package.json, pyproject.toml, setup.py).
+2. Implement init logic to choose build config if Dockerfile found, otherwise prompt for base image based on project type.
+3. Generate branchspace.json with defaults + chosen containerConfig and write to repo root.
+4. Wire `branchspace init` to prompts and add unit tests for detection logic.
+<!-- SECTION:PLAN:END -->
