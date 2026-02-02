@@ -54,7 +54,6 @@ class TestMainCli:
     @pytest.mark.parametrize(
         "command",
         [
-            "shell",
             "purge",
             "init",
         ],
@@ -129,5 +128,14 @@ class TestMainCli:
         monkeypatch.setattr("branchspace.main_cli.render_manual_instructions", lambda: None)
 
         result = runner.invoke(main, ["shell-integration"])
+
+        assert result.exit_code == 0
+
+    def test_shell_invokes_docker(self, monkeypatch):
+        runner = CliRunner()
+        monkeypatch.setattr("branchspace.main_cli.load_config", lambda: BranchspaceConfig())
+        monkeypatch.setattr("branchspace.main_cli.run_docker_shell", lambda *_args, **_kwargs: None)
+
+        result = runner.invoke(main, ["shell", "npm test"])
 
         assert result.exit_code == 0

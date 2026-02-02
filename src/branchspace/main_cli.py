@@ -16,6 +16,8 @@ from branchspace.console import error
 from branchspace.console import info
 from branchspace.console import spinner
 from branchspace.console import success
+from branchspace.docker_shell import DockerShellError
+from branchspace.docker_shell import run_docker_shell
 from branchspace.worktree_create import CreateWorktreeError
 from branchspace.worktree_create import create_worktrees
 from branchspace.worktree_cd import WorktreeLookupError
@@ -123,9 +125,24 @@ def ls() -> None:
 
 
 @main.command(help="Open an interactive shell.")
-def shell() -> None:
+@click.argument("command", required=False)
+def shell(command: str | None) -> None:
     """Open an interactive shell."""
-    click.echo("Not implemented yet.")
+    try:
+        config = load_config()
+    except ConfigError as exc:
+        error(str(exc))
+        raise SystemExit(1) from exc
+
+    try:
+        with spinner("Starting container shell"):
+            run_docker_shell(config, command=command)
+    except DockerShellError as exc:
+        error(str(exc))
+        raise SystemExit(1) from exc
+    except subprocess.CalledProcessError as exc:
+        error(exc.stderr.strip() if exc.stderr else str(exc))
+        raise SystemExit(1) from exc
 
 
 @main.command(help="Purge a worktree and related resources.")
