@@ -54,7 +54,6 @@ class TestMainCli:
     @pytest.mark.parametrize(
         "command",
         [
-            "purge",
             "init",
         ],
     )
@@ -137,5 +136,16 @@ class TestMainCli:
         monkeypatch.setattr("branchspace.main_cli.run_docker_shell", lambda *_args, **_kwargs: None)
 
         result = runner.invoke(main, ["shell", "npm test"])
+
+        assert result.exit_code == 0
+
+    def test_purge_dry_run(self, monkeypatch):
+        runner = CliRunner()
+        monkeypatch.setattr(
+            "branchspace.main_cli.run_docker_purge",
+            lambda **_kwargs: type("Resources", (), {"is_empty": lambda self: True})(),
+        )
+
+        result = runner.invoke(main, ["purge", "--dry-run"])
 
         assert result.exit_code == 0

@@ -18,6 +18,8 @@ from branchspace.console import spinner
 from branchspace.console import success
 from branchspace.docker_shell import DockerShellError
 from branchspace.docker_shell import run_docker_shell
+from branchspace.docker_purge import DockerPurgeError
+from branchspace.docker_purge import run_docker_purge
 from branchspace.worktree_create import CreateWorktreeError
 from branchspace.worktree_create import create_worktrees
 from branchspace.worktree_cd import WorktreeLookupError
@@ -146,9 +148,26 @@ def shell(command: str | None) -> None:
 
 
 @main.command(help="Purge a worktree and related resources.")
-def purge() -> None:
+@click.option("--force", is_flag=True, help="Skip confirmation prompts.")
+@click.option("--dry-run", is_flag=True, help="Preview resources without removing.")
+def purge(force: bool, dry_run: bool) -> None:
     """Purge a worktree and related resources."""
-    click.echo("Not implemented yet.")
+    try:
+        with spinner("Discovering Docker resources"):
+            resources = run_docker_purge(dry_run=dry_run, force=force)
+    except DockerPurgeError as exc:
+        error(str(exc))
+        raise SystemExit(1) from exc
+    except subprocess.CalledProcessError as exc:
+        error(exc.stderr.strip() if exc.stderr else str(exc))
+        raise SystemExit(1) from exc
+
+    if resources.is_empty():
+        info("No Docker resources found.")
+        return
+
+    if dry_run:
+        info("Dry run only. No resources removed.")
 
 
 @main.command(help="Initialize configuration for this repository.")
