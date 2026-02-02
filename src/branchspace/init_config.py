@@ -1,7 +1,5 @@
 """Initialization helpers for branchspace configuration."""
 
-from __future__ import annotations
-
 import json
 
 from dataclasses import dataclass
@@ -9,10 +7,10 @@ from pathlib import Path
 
 import questionary
 
+from branchspace.config import CONFIG_FILENAME
 from branchspace.config import BranchspaceConfig
 from branchspace.config import ContainerBuildConfig
 from branchspace.config import ContainerImageConfig
-from branchspace.config import CONFIG_FILENAME
 from branchspace.config import get_git_root
 
 

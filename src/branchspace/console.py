@@ -1,10 +1,8 @@
 """Rich console utilities for branchspace output."""
 
-from __future__ import annotations
-
+from collections.abc import Iterator
 from contextlib import contextmanager
 from dataclasses import dataclass
-from typing import Iterator
 
 from rich.console import Console
 from rich.status import Status

@@ -1,10 +1,7 @@
 """Worktree path resolution for `branchspace cd`."""
 
-from __future__ import annotations
-
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
 from branchspace.config import get_git_root
 from branchspace.git_utils import list_worktrees
@@ -18,7 +15,7 @@ class WorktreeLookupError(RuntimeError):
 class WorktreePath:
     """Resolved worktree path for a branch."""
 
-    branch: Optional[str]
+    branch: str | None
     path: Path
 
 

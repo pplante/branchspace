@@ -1,10 +1,8 @@
 """Worktree listing logic for branchspace."""
 
-from __future__ import annotations
-
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
 
 from branchspace.console import build_worktree_table as build_rich_worktree_table
 from branchspace.git_utils import GitWorktree

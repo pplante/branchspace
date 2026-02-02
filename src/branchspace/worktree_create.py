@@ -1,14 +1,12 @@
 """Worktree creation logic for branchspace."""
 
-from __future__ import annotations
-
 import glob
 import subprocess
 
+from collections.abc import Iterable
+from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
-from typing import Sequence
 
 from branchspace.config import BranchspaceConfig
 from branchspace.config import TemplateContext

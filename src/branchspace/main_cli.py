@@ -1,7 +1,5 @@
 """Main CLI entrypoint for branchspace."""
 
-from __future__ import annotations
-
 import subprocess
 
 import click
@@ -16,23 +14,23 @@ from branchspace.console import error
 from branchspace.console import info
 from branchspace.console import spinner
 from branchspace.console import success
-from branchspace.docker_shell import DockerShellError
-from branchspace.docker_shell import run_docker_shell
 from branchspace.docker_purge import DockerPurgeError
 from branchspace.docker_purge import run_docker_purge
+from branchspace.docker_shell import DockerShellError
+from branchspace.docker_shell import run_docker_shell
 from branchspace.init_config import init_config
-from branchspace.worktree_create import CreateWorktreeError
-from branchspace.worktree_create import create_worktrees
-from branchspace.worktree_cd import WorktreeLookupError
-from branchspace.worktree_cd import resolve_worktree_path
-from branchspace.worktree_remove import WorktreeRemoveError
-from branchspace.worktree_remove import remove_worktrees
-from branchspace.worktree_list import build_worktree_list_table
-from branchspace.worktree_list import list_worktree_statuses
 from branchspace.shell_integration import append_integration
 from branchspace.shell_integration import build_shell_function
 from branchspace.shell_integration import detect_shell_rc_files
 from branchspace.shell_integration import render_manual_instructions
+from branchspace.worktree_cd import WorktreeLookupError
+from branchspace.worktree_cd import resolve_worktree_path
+from branchspace.worktree_create import CreateWorktreeError
+from branchspace.worktree_create import create_worktrees
+from branchspace.worktree_list import build_worktree_list_table
+from branchspace.worktree_list import list_worktree_statuses
+from branchspace.worktree_remove import WorktreeRemoveError
+from branchspace.worktree_remove import remove_worktrees
 
 
 @click.group(

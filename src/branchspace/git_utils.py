@@ -1,12 +1,11 @@
 """Git utilities for branchspace operations."""
 
-from __future__ import annotations
-
 import subprocess
-from dataclasses import dataclass, field
+
+from dataclasses import dataclass
+from dataclasses import field
 from enum import Enum
 from pathlib import Path
-from typing import Optional
 
 
 class ProtectedBranchLevel(Enum):
@@ -24,7 +23,7 @@ class GitStatus:
     is_git_repo: bool
     uncommitted_changes: bool
     unpushed_commits: bool
-    current_branch: Optional[str] = None
+    current_branch: str | None = None
     worktrees: list[GitWorktree] = field(default_factory=list)
     protected_branches: list[str] = field(default_factory=list)
 
@@ -51,7 +50,7 @@ class BranchInfo:
 
 
 def _run_git_command(
-    command: list[str], cwd: Optional[Path] = None, capture_output: bool = True
+    command: list[str], cwd: Path | None = None, capture_output: bool = True
 ) -> subprocess.CompletedProcess:
     """Run a git command with proper error handling.
 
@@ -81,7 +80,7 @@ def _run_git_command(
         raise
 
 
-def is_git_repository(path: Optional[Path] = None) -> bool:
+def is_git_repository(path: Path | None = None) -> bool:
     """Check if a directory is a git repository.
 
     Args:
@@ -97,7 +96,7 @@ def is_git_repository(path: Optional[Path] = None) -> bool:
         return False
 
 
-def get_current_branch(path: Optional[Path] = None) -> Optional[str]:
+def get_current_branch(path: Path | None = None) -> str | None:
     """Get the current branch name for the repository.
 
     Args:
@@ -114,7 +113,7 @@ def get_current_branch(path: Optional[Path] = None) -> Optional[str]:
         return None
 
 
-def list_worktrees(path: Optional[Path] = None) -> list[GitWorktree]:
+def list_worktrees(path: Path | None = None) -> list[GitWorktree]:
     """List all worktrees in the repository.
 
     Args:
@@ -180,7 +179,7 @@ def list_worktrees(path: Optional[Path] = None) -> list[GitWorktree]:
 def create_worktree(
     path: Path,
     branch: str,
-    repository_path: Optional[Path] = None,
+    repository_path: Path | None = None,
     create_branch: bool = True,
 ) -> GitWorktree:
     """Create a new worktree with a new or existing branch.
@@ -219,7 +218,7 @@ def create_worktree(
 def remove_worktree(
     worktree_path: Path,
     force: bool = False,
-    repository_path: Optional[Path] = None,
+    repository_path: Path | None = None,
 ) -> None:
     """Remove a worktree safely.
 
@@ -238,7 +237,7 @@ def remove_worktree(
 
 
 def get_protected_branches(
-    repository_path: Optional[Path] = None,
+    repository_path: Path | None = None,
 ) -> list[str]:
     """Get the list of protected branch names.
 
@@ -270,7 +269,7 @@ def get_protected_branches(
         return default_protected
 
 
-def has_uncommitted_changes(path: Optional[Path] = None) -> bool:
+def has_uncommitted_changes(path: Path | None = None) -> bool:
     """Check if there are uncommitted changes in the repository.
 
     Args:
@@ -290,7 +289,7 @@ def has_uncommitted_changes(path: Optional[Path] = None) -> bool:
         return False
 
 
-def has_uncommitted_changes_with_untracked(path: Optional[Path] = None) -> bool:
+def has_uncommitted_changes_with_untracked(path: Path | None = None) -> bool:
     """Check if there are uncommitted or untracked changes in the repository."""
     try:
         result = _run_git_command(
@@ -303,7 +302,7 @@ def has_uncommitted_changes_with_untracked(path: Optional[Path] = None) -> bool:
         return False
 
 
-def has_unpushed_commits(path: Optional[Path] = None) -> bool:
+def has_unpushed_commits(path: Path | None = None) -> bool:
     """Check if there are commits that haven't been pushed to the remote.
 
     Args:
@@ -323,7 +322,7 @@ def has_unpushed_commits(path: Optional[Path] = None) -> bool:
         return False
 
 
-def list_branches(path: Optional[Path] = None) -> list[BranchInfo]:
+def list_branches(path: Path | None = None) -> list[BranchInfo]:
     """List all branches in the repository.
 
     Args:
@@ -371,7 +370,7 @@ def list_branches(path: Optional[Path] = None) -> list[BranchInfo]:
     return branches
 
 
-def get_git_status(path: Optional[Path] = None) -> GitStatus:
+def get_git_status(path: Path | None = None) -> GitStatus:
     """Get comprehensive git status information.
 
     Args:

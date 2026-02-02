@@ -4,8 +4,12 @@ from __future__ import annotations
 
 import re
 
-from collections.abc import Mapping
+from typing import TYPE_CHECKING
 from typing import overload
+
+
+if TYPE_CHECKING:
+    from collections.abc import Mapping
 
 
 class TemplateVariableError(ValueError):

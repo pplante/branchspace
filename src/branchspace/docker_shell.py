@@ -1,13 +1,10 @@
 """Docker shell command builder for branchspace."""
 
-from __future__ import annotations
-
 import re
 import subprocess
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Sequence
 
 from branchspace.config import BranchspaceConfig
 from branchspace.config import ContainerBuildConfig
