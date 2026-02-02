@@ -42,6 +42,7 @@ def _resolve_worktree_path(
     base_path: str,
     branch_name: str,
     source_branch: str,
+    project_name: str,
     repo_root: Path,
 ) -> Path:
     if "$WORKTREE_PATH" in template:
@@ -52,6 +53,7 @@ def _resolve_worktree_path(
         worktree_path="",
         branch_name=branch_name,
         source_branch=source_branch,
+        project_name=project_name,
     )
     resolved = substitute_template(template, context.as_mapping())
     path = Path(resolved)
@@ -135,6 +137,7 @@ def create_worktree_for_branch(
             base_path,
             branch,
             source_branch,
+            config.project_name or base_path,
             repo_root,
         )
     except TemplateVariableError as exc:
@@ -147,6 +150,7 @@ def create_worktree_for_branch(
         worktree_path=str(worktree_path),
         branch_name=branch,
         source_branch=source_branch,
+        project_name=config.project_name or base_path,
     )
     variables = context.as_mapping()
 

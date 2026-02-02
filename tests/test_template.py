@@ -51,6 +51,13 @@ class TestSubstituteTemplate:
         with pytest.raises(TemplateVariableError):
             substitute_template(template, variables)
 
+    def test_unknown_variable_raises(self):
+        template = "use $UNKNOWN_VAR"
+        variables = {"BASE_PATH": "myproject"}
+
+        with pytest.raises(TemplateVariableError):
+            substitute_template(template, variables)
+
     def test_missing_variable_can_be_left_intact(self):
         template = "use $BASE_PATH and $SOURCE_BRANCH"
         variables = {"BASE_PATH": "myproject"}

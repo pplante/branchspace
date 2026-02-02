@@ -16,7 +16,10 @@ class TemplateVariableError(ValueError):
     """Raised when a required template variable is missing."""
 
 
-_VARIABLE_PATTERN = re.compile(r"\$(BASE_PATH|WORKTREE_PATH|BRANCH_NAME|SOURCE_BRANCH)")
+_VARIABLE_PATTERN = re.compile(
+    r"\$(BASE_PATH|WORKTREE_PATH|BRANCH_NAME|SOURCE_BRANCH|PROJECT_NAME)"
+)
+_ANY_VARIABLE_PATTERN = re.compile(r"\$[A-Z_]+")
 
 
 def normalize_template_variables(variables: Mapping[str, str]) -> dict[str, str]:
@@ -32,6 +35,12 @@ def normalize_template_variables(variables: Mapping[str, str]) -> dict[str, str]
 
 
 def _substitute_string(template: str, variables: Mapping[str, str], strict: bool) -> str:
+    if strict:
+        for match in _ANY_VARIABLE_PATTERN.findall(template):
+            name = match[1:]
+            if name not in variables:
+                raise TemplateVariableError(f"Unknown template variable: {name}")
+
     def replace(match: re.Match[str]) -> str:
         name = match.group(1)
         if name not in variables:

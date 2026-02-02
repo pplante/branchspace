@@ -4,6 +4,7 @@ import json
 import os
 import subprocess
 
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Annotated
 
@@ -70,9 +71,16 @@ class BranchspaceConfig(BaseModel):
 
     # Template for worktree directory path
     worktree_path_template: str = Field(
-        default_factory=lambda: f"{os.path.expanduser('~')}/.branchspace/worktrees/$BRANCH_NAME",
+        default_factory=lambda: f"{os.path.expanduser('~')}/.branchspace/worktrees/$PROJECT_NAME/$BRANCH_NAME",
         alias="worktreePathTemplate",
         description="Template for worktree directory path",
+    )
+
+    # Project name for template usage
+    project_name: str = Field(
+        default="",
+        alias="projectName",
+        description="Project name for template variables",
     )
 
     # Commands to run after worktree creation
@@ -245,13 +253,15 @@ def load_config(path: Path | None = None) -> BranchspaceConfig:
         ) from e
 
 
-class TemplateContext(BaseModel):
+@dataclass(frozen=True)
+class TemplateContext:
     """Template variables for expanding config strings."""
 
     base_path: str
     worktree_path: str
     branch_name: str
     source_branch: str
+    project_name: str
 
     def as_mapping(self) -> dict[str, str]:
         return {
@@ -259,4 +269,12 @@ class TemplateContext(BaseModel):
             "WORKTREE_PATH": self.worktree_path,
             "BRANCH_NAME": self.branch_name,
             "SOURCE_BRANCH": self.source_branch,
+            "PROJECT_NAME": self.project_name or self.base_path,
         }
+
+    # Project name for template usage
+    project_name: str = Field(
+        default="",
+        alias="projectName",
+        description="Project name for template variables",
+    )

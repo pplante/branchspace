@@ -93,6 +93,11 @@ class TestBranchspaceConfigDefaults:
         assert isinstance(config.container_config, ContainerImageConfig)
         assert config.container_config.image == "ubuntu:24.04"
 
+    def test_default_project_name(self):
+        """Test default projectName is empty."""
+        config = BranchspaceConfig()
+        assert config.project_name == ""
+
     def test_default_shell(self):
         """Test default shell is bash."""
         config = BranchspaceConfig()
@@ -113,6 +118,7 @@ class TestBranchspaceConfigParsing:
             "purgeOnRemove": True,
             "containerConfig": {"image": "node:24"},
             "shell": "zsh",
+            "projectName": "branchspace",
         }
         config = BranchspaceConfig.model_validate(data)
 
@@ -125,6 +131,7 @@ class TestBranchspaceConfigParsing:
         assert isinstance(config.container_config, ContainerImageConfig)
         assert config.container_config.image == "node:24"
         assert config.shell == "zsh"
+        assert config.project_name == "branchspace"
 
     def test_parse_snake_case_json(self):
         """Test parsing JSON with snake_case keys."""
@@ -397,6 +404,7 @@ class TestTemplateContext:
             worktree_path="/repo/worktrees/feature-auth",
             branch_name="feature-auth",
             source_branch="main",
+            project_name="branchspace",
         )
 
         mapping = context.as_mapping()
@@ -406,4 +414,5 @@ class TestTemplateContext:
             "WORKTREE_PATH": "/repo/worktrees/feature-auth",
             "BRANCH_NAME": "feature-auth",
             "SOURCE_BRANCH": "main",
+            "PROJECT_NAME": "branchspace",
         }
