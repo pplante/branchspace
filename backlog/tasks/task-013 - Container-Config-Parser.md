@@ -33,10 +33,10 @@ Extend the configuration system to properly parse and validate containerConfig.
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Parses image config format: {"image": "python:3.14"}
-- [ ] #2 Parses build config format: {"context": ".", "dockerfile": "Dockerfile.dev"}
-- [ ] #3 Validates config and provides helpful error messages
-- [ ] #4 Unit tests for all config variants
+- [x] #1 Parses image config format: {"image": "python:3.14"}
+- [x] #2 Parses build config format: {"context": ".", "dockerfile": "Dockerfile.dev"}
+- [x] #3 Validates config and provides helpful error messages
+- [x] #4 Unit tests for all config variants
 <!-- AC:END -->
 
 ## Implementation Plan
