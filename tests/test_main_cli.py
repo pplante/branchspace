@@ -32,6 +32,7 @@ class TestMainCli:
         assert "init" in result.output
         assert "config" in result.output
         assert "shell-integration" in result.output
+        assert "agents" in result.output
 
     def test_version_flag(self):
         runner = CliRunner()

@@ -6,6 +6,11 @@ import click
 import questionary
 
 from branchspace import __version__
+from branchspace.agents import SUPPORTED_AGENTS
+from branchspace.agents import format_agent_label
+from branchspace.agents import generate_instructions
+from branchspace.agents import get_project_root
+from branchspace.agents import write_instructions
 from branchspace.config import ConfigError
 from branchspace.config import load_config
 from branchspace.config_display import load_config_view
@@ -229,3 +234,73 @@ def shell_integration() -> None:
 
     if not updated:
         render_manual_instructions()
+
+
+@main.command(help="Generate AI agent instructions for this repository.")
+def agents() -> None:
+    """Generate AI agent instructions for this repository."""
+    choices = [format_agent_label(agent) for agent in SUPPORTED_AGENTS]
+    selection = questionary.checkbox(
+        "Select agents to generate instructions for:",
+        choices=choices,
+    ).unsafe_ask()
+
+    if not selection:
+        info("No agents selected.")
+        return
+
+    output_target = questionary.select(
+        "Output instructions to:",
+        choices=[
+            "Console only",
+            "Write to file(s)",
+            "Both",
+        ],
+    ).unsafe_ask()
+
+    if output_target is None:
+        info("No output target selected.")
+        return
+
+    selected_agents = [
+        agent for agent in SUPPORTED_AGENTS if format_agent_label(agent) in selection
+    ]
+    audience = [agent.name for agent in selected_agents]
+    instructions = generate_instructions(audience)
+
+    if output_target in {"Console only", "Both"}:
+        click.echo(instructions)
+
+    if output_target in {"Write to file(s)", "Both"}:
+        project_root = get_project_root()
+        filename_to_agents: dict[str, list[str]] = {}
+        for agent in selected_agents:
+            filename_to_agents.setdefault(agent.filename, []).append(agent.name)
+
+        for filename, agent_names in filename_to_agents.items():
+            target_path = project_root / filename
+            file_exists = target_path.exists()
+            if file_exists:
+                mode = questionary.select(
+                    f"{filename} exists. Choose how to update it:",
+                    choices=[
+                        "Append",
+                        "Overwrite",
+                        "Skip",
+                    ],
+                ).unsafe_ask()
+
+                if mode is None:
+                    info(f"Skipped {filename}.")
+                    continue
+
+                mode_key = mode.lower()
+            else:
+                mode_key = "overwrite"
+
+            file_instructions = generate_instructions(agent_names)
+            write_instructions(target_path, file_instructions, mode_key)
+            if mode_key == "skip":
+                info(f"Skipped {target_path}")
+            else:
+                success(f"Wrote {target_path}")
