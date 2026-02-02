@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:23'
-updated_date: '2026-02-02 01:40'
+updated_date: '2026-02-02 01:42'
 labels:
   - cli
   - docker
@@ -52,3 +52,17 @@ Implement Docker cleanup command for current branch.
 3. Wire `branchspace purge` to use the helper and questionary confirmation prompt.
 4. Add unit tests for resource discovery and purge command generation.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added Docker purge helper to discover containers/images/volumes and render previews.
+- Wired `branchspace purge` with --dry-run and --force options plus confirmation prompts.
+- Added unit tests for resource discovery and CLI wiring.
+
+- Added Docker purge helper to discover containers/images/volumes and render previews.
+
+- Wired `branchspace purge` with --dry-run and --force options plus confirmation prompts.
+
+- Added unit tests for resource discovery and CLI wiring.
+<!-- SECTION:NOTES:END -->
