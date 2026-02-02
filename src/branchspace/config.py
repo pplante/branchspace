@@ -71,7 +71,7 @@ class BranchspaceConfig(BaseModel):
 
     # Template for worktree directory path
     worktree_path_template: str = Field(
-        default_factory=lambda: f"{os.path.expanduser('~')}/.branchspace/worktrees/$PROJECT_NAME/$BRANCH_NAME",
+        default_factory=lambda: ".branchspace/worktrees/$BRANCH_NAME",
         alias="worktreePathTemplate",
         description="Template for worktree directory path",
     )
