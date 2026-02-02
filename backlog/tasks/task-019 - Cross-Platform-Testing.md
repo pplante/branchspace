@@ -11,7 +11,7 @@ labels:
 milestone: 'Phase 5: Polish & Cross-Platform'
 dependencies: []
 priority: low
-ordinal: 1000
+ordinal: 5500
 ---
 
 ## Description
