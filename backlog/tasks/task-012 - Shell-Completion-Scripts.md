@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-02 00:51'
+updated_date: '2026-02-02 00:52'
 labels:
   - cli
   - shell
@@ -55,3 +55,17 @@ _BRANCHSPACE_COMPLETE=fish_source branchspace > ~/.config/fish/completions/branc
 2. Verify README instructions align with Click completion env vars for bash/zsh/fish.
 3. Add a lightweight test or script check to ensure completion generation works for each shell.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Verified Click completion output for bash, zsh, and fish via env var hooks after setting prog_name.
+- Added tests to assert completion script generation for bash/zsh/fish.
+- Adjusted module entrypoint to use prog name for completion scripts.
+
+- Verified Click completion output for bash, zsh, and fish via env var hooks after setting prog_name.
+
+- Added tests to assert completion script generation for bash/zsh/fish.
+
+- Adjusted module entrypoint to use prog name for completion scripts.
+<!-- SECTION:NOTES:END -->
