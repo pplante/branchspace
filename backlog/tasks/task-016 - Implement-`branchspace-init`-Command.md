@@ -37,12 +37,12 @@ Implement automatic project detection and configuration generation.
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Detects Dockerfile, Dockerfile.dev, or similar files
-- [ ] #2 Offers to use detected Dockerfile for build config
-- [ ] #3 Falls back to prompting for base image selection
-- [ ] #4 Generates complete branchspace.json with sensible defaults
-- [ ] #5 Detects project type (Node.js, Python) for smart defaults
-- [ ] #6 Unit tests for detection logic
+- [x] #1 Detects Dockerfile, Dockerfile.dev, or similar files
+- [x] #2 Offers to use detected Dockerfile for build config
+- [x] #3 Falls back to prompting for base image selection
+- [x] #4 Generates complete branchspace.json with sensible defaults
+- [x] #5 Detects project type (Node.js, Python) for smart defaults
+- [x] #6 Unit tests for detection logic
 <!-- AC:END -->
 
 ## Implementation Plan
