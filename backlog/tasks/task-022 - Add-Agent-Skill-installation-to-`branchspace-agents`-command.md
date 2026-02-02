@@ -1,9 +1,11 @@
 ---
 id: TASK-022
 title: Add Agent Skill installation to `branchspace agents` command
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@claude'
 created_date: '2026-02-02 04:30'
+updated_date: '2026-02-02 04:30'
 labels:
   - feature
   - cli
@@ -41,3 +43,13 @@ Reference: https://agentskills.io/specification
 - [ ] #7 Success message shows installed skill path
 - [ ] #8 Unit tests for skill generation, installation, and path resolution
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Create `src/branchspace/skill.py` with skill generation and installation logic
+2. Update `src/branchspace/main_cli.py` to add skill installation prompts to agents command
+3. Create `tests/test_skill.py` with unit tests
+4. Run tests to verify functionality
+5. Manual verification of the CLI flow
+<!-- SECTION:PLAN:END -->
