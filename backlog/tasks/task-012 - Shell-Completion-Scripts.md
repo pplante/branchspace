@@ -47,3 +47,11 @@ _BRANCHSPACE_COMPLETE=fish_source branchspace > ~/.config/fish/completions/branc
 - [ ] #4 Completions include all commands and arguments
 - [ ] #5 Instructions in README match implementation
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Ensure Click completion support is enabled (env var hooks) without additional flags.
+2. Verify README instructions align with Click completion env vars for bash/zsh/fish.
+3. Add a lightweight test or script check to ensure completion generation works for each shell.
+<!-- SECTION:PLAN:END -->
