@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-02-02 03:16'
-updated_date: '2026-02-02 03:48'
+updated_date: '2026-02-02 03:50'
 labels:
   - cli
   - docs
@@ -37,3 +37,11 @@ Provide a new `branchspace agents` command that lets users select supported AI c
 3. Add file output handling for existing files (append/overwrite/skip prompt) and de-duplicate shared filenames.
 4. Add tests for instruction content and file write behavior.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Implemented agents instruction generator and CLI wiring.
+
+Added tests for instructions and updated CLI help coverage.
+<!-- SECTION:NOTES:END -->
