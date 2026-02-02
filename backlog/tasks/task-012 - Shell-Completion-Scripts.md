@@ -1,9 +1,11 @@
 ---
 id: TASK-012
 title: Shell Completion Scripts
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@opencode'
 created_date: '2026-01-31 21:22'
+updated_date: '2026-02-02 00:51'
 labels:
   - cli
   - shell
