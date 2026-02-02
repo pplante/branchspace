@@ -59,10 +59,4 @@ Implement Docker cleanup command for current branch.
 - Added Docker purge helper to discover containers/images/volumes and render previews.
 - Wired `branchspace purge` with --dry-run and --force options plus confirmation prompts.
 - Added unit tests for resource discovery and CLI wiring.
-
-- Added Docker purge helper to discover containers/images/volumes and render previews.
-
-- Wired `branchspace purge` with --dry-run and --force options plus confirmation prompts.
-
-- Added unit tests for resource discovery and CLI wiring.
 <!-- SECTION:NOTES:END -->
