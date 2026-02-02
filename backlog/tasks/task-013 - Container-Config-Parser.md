@@ -1,7 +1,7 @@
 ---
 id: TASK-013
 title: Container Config Parser
-status: In Progress
+status: Done
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
