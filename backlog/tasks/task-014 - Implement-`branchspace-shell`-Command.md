@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-02 01:32'
+updated_date: '2026-02-02 01:39'
 labels:
   - cli
   - docker
@@ -56,3 +56,17 @@ Implement Docker shell command for branch-specific containers.
 3. Wire `branchspace shell` to execute commands and handle optional single command argument.
 4. Add unit tests covering command generation for image and build configs.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added docker shell command builder for image/build configs and branch-based container naming.
+- Wired `branchspace shell` to run docker pull/build + run with optional command argument.
+- Added unit tests for docker command generation and CLI wiring.
+
+- Added docker shell command builder for image/build configs and branch-based container naming.
+
+- Wired `branchspace shell` to run docker pull/build + run with optional command argument.
+
+- Added unit tests for docker command generation and CLI wiring.
+<!-- SECTION:NOTES:END -->
