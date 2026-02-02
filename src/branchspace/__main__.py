@@ -4,4 +4,4 @@ from branchspace.main_cli import main
 
 
 if __name__ == "__main__":
-    main()
+    main(prog_name="branchspace")
