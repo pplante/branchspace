@@ -5,6 +5,7 @@ from __future__ import annotations
 import subprocess
 
 import click
+import questionary
 
 from branchspace import __version__
 from branchspace.config import ConfigError
@@ -23,6 +24,10 @@ from branchspace.worktree_remove import WorktreeRemoveError
 from branchspace.worktree_remove import remove_worktrees
 from branchspace.worktree_list import build_worktree_list_table
 from branchspace.worktree_list import list_worktree_statuses
+from branchspace.shell_integration import append_integration
+from branchspace.shell_integration import build_shell_function
+from branchspace.shell_integration import detect_shell_rc_files
+from branchspace.shell_integration import render_manual_instructions
 
 
 @click.group("branchspace", help="Manage git worktrees and environments.")
@@ -150,4 +155,33 @@ def config_cmd() -> None:
 @main.command(name="shell-integration", help="Install shell integration.")
 def shell_integration() -> None:
     """Install shell integration."""
-    click.echo("Not implemented yet.")
+    candidates = detect_shell_rc_files()
+    if not candidates:
+        info("No supported shell rc files detected.")
+        render_manual_instructions()
+        return
+
+    choices = [f"{candidate.name}: {candidate.rc_path}" for candidate in candidates]
+    selection = questionary.checkbox(
+        "Select shell rc files to update:",
+        choices=choices,
+    ).unsafe_ask()
+
+    if not selection:
+        render_manual_instructions()
+        return
+
+    snippet = build_shell_function()
+    updated = False
+    for candidate in candidates:
+        label = f"{candidate.name}: {candidate.rc_path}"
+        if label not in selection:
+            continue
+        if append_integration(candidate.rc_path, snippet):
+            success(f"Updated {candidate.rc_path}")
+            updated = True
+        else:
+            info(f"Integration already present in {candidate.rc_path}")
+
+    if not updated:
+        render_manual_instructions()

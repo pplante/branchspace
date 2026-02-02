@@ -57,7 +57,6 @@ class TestMainCli:
             "shell",
             "purge",
             "init",
-            "shell-integration",
         ],
     )
     def test_placeholder_commands(self, command: str):
@@ -117,5 +116,18 @@ class TestMainCli:
         monkeypatch.setattr("branchspace.main_cli.render_config", lambda _view: None)
 
         result = runner.invoke(main, ["config"])
+
+        assert result.exit_code == 0
+
+    def test_shell_integration_no_rc_files(self, monkeypatch):
+        runner = CliRunner()
+
+        monkeypatch.setattr(
+            "branchspace.main_cli.detect_shell_rc_files",
+            lambda: [],
+        )
+        monkeypatch.setattr("branchspace.main_cli.render_manual_instructions", lambda: None)
+
+        result = runner.invoke(main, ["shell-integration"])
 
         assert result.exit_code == 0
