@@ -53,8 +53,4 @@ Extend the configuration system to properly parse and validate containerConfig.
 <!-- SECTION:NOTES:BEGIN -->
 - Updated container build config to require context and added default dockerfile behavior.
 - Expanded config parsing tests for build container defaults and validation errors.
-
-- Updated container build config to require context and added default dockerfile behavior.
-
-- Expanded config parsing tests for build container defaults and validation errors.
 <!-- SECTION:NOTES:END -->
