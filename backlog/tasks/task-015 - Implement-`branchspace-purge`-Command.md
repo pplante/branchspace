@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:23'
-updated_date: '2026-02-02 01:42'
+updated_date: '2026-02-02 02:39'
 labels:
   - cli
   - docker
@@ -13,6 +13,7 @@ milestone: 'Phase 4: Docker Features'
 dependencies:
   - TASK-002
 priority: medium
+ordinal: 4000
 ---
 
 ## Description

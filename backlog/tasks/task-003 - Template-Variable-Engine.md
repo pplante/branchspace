@@ -5,12 +5,13 @@ status: Done
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:19'
-updated_date: '2026-02-01 19:04'
+updated_date: '2026-02-02 02:39'
 labels:
   - infrastructure
 milestone: 'Phase 1: Core Infrastructure'
 dependencies: []
 priority: high
+ordinal: 16000
 ---
 
 ## Description

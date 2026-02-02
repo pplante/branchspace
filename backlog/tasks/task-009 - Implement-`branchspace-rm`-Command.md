@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-01 21:05'
+updated_date: '2026-02-02 02:39'
 labels:
   - cli
   - worktree
@@ -14,6 +14,7 @@ dependencies:
   - TASK-001
   - TASK-002
 priority: high
+ordinal: 10000
 ---
 
 ## Description

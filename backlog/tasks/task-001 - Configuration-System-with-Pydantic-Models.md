@@ -5,13 +5,14 @@ status: Done
 assignee:
   - claude
 created_date: '2026-01-31 21:19'
-updated_date: '2026-01-31 21:28'
+updated_date: '2026-02-02 02:39'
 labels:
   - infrastructure
   - config
 milestone: 'Phase 1: Core Infrastructure'
 dependencies: []
 priority: high
+ordinal: 18000
 ---
 
 ## Description

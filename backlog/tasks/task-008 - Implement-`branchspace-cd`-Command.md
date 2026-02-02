@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-01 20:58'
+updated_date: '2026-02-02 02:39'
 labels:
   - cli
   - worktree
@@ -13,6 +13,7 @@ milestone: 'Phase 2: Worktree Commands'
 dependencies:
   - TASK-002
 priority: high
+ordinal: 11000
 ---
 
 ## Description

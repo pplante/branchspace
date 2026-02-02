@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-02 00:53'
+updated_date: '2026-02-02 02:39'
 labels:
   - cli
   - shell
@@ -13,6 +13,7 @@ milestone: 'Phase 3: Shell Integration'
 dependencies:
   - TASK-004
 priority: high
+ordinal: 7000
 ---
 
 ## Description

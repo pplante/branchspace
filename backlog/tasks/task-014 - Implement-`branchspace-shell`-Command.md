@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-02 01:39'
+updated_date: '2026-02-02 02:39'
 labels:
   - cli
   - docker
@@ -14,6 +14,7 @@ dependencies:
   - TASK-013
   - TASK-002
 priority: medium
+ordinal: 5000
 ---
 
 ## Description
