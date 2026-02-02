@@ -5,13 +5,14 @@ status: Done
 assignee:
   - '@opencode'
 created_date: '2026-02-02 03:16'
-updated_date: '2026-02-02 03:52'
+updated_date: '2026-02-02 04:27'
 labels:
   - cli
   - docs
   - agents
 dependencies: []
 priority: medium
+ordinal: 19000
 ---
 
 ## Description
