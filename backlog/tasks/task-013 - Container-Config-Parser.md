@@ -38,3 +38,12 @@ Extend the configuration system to properly parse and validate containerConfig.
 - [ ] #3 Validates config and provides helpful error messages
 - [ ] #4 Unit tests for all config variants
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Review existing container config models and validation in config.py to see current behavior.
+2. Adjust discriminator/validation to enforce image vs build requirements with clear errors.
+3. Add unit tests covering valid image/build configs and invalid configs (missing required fields).
+4. Update README/config docs if any usage needs clarification.
+<!-- SECTION:PLAN:END -->
