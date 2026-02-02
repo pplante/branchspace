@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:23'
-updated_date: '2026-02-02 02:36'
+updated_date: '2026-02-02 02:37'
 labels:
   - config
 milestone: 'Phase 5: Polish & Cross-Platform'
@@ -35,10 +35,10 @@ branchspace create feature-auth  # Creates in $HOME/my-worktrees/...
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 BRANCHSPACE_BASE overrides default worktree location
-- [ ] #2 Default is $HOME/worktrees
-- [ ] #3 Environment variable documented in --help
-- [ ] #4 Unit tests for env var handling
+- [x] #1 BRANCHSPACE_BASE overrides default worktree location
+- [x] #2 Default is $HOME/worktrees
+- [x] #3 Environment variable documented in --help
+- [x] #4 Unit tests for env var handling
 <!-- AC:END -->
 
 ## Implementation Plan
