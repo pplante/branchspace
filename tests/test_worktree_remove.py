@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 import pytest
+
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 from branchspace.config import BranchspaceConfig
 from branchspace.worktree_remove import WorktreeRemoveError

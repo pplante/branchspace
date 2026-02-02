@@ -2,13 +2,17 @@
 
 from __future__ import annotations
 
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 from branchspace.config import BranchspaceConfig
 from branchspace.config import TemplateContext
 from branchspace.worktree_create import CreateWorktreeError
 from branchspace.worktree_create import copy_worktree_files
 from branchspace.worktree_create import create_worktree_for_branch
+
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 def test_create_worktree_resolves_template_path(tmp_path: Path, monkeypatch):
@@ -94,6 +98,7 @@ def test_template_context_mapping_used():
         worktree_path="/tmp/repo/worktrees/feature",
         branch_name="feature",
         source_branch="main",
+        project_name="",
     )
 
     mapping = context.as_mapping()

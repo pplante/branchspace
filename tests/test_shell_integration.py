@@ -2,13 +2,17 @@
 
 from __future__ import annotations
 
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 from branchspace.shell_integration import MARKER_END
 from branchspace.shell_integration import MARKER_START
 from branchspace.shell_integration import append_integration
 from branchspace.shell_integration import build_shell_function
 from branchspace.shell_integration import has_integration
+
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 def test_build_shell_function_contains_markers():

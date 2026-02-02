@@ -1,5 +1,7 @@
 """Git utilities for branchspace operations."""
 
+from __future__ import annotations
+
 import subprocess
 
 from dataclasses import dataclass
@@ -67,7 +69,7 @@ def _run_git_command(
     """
     try:
         result = subprocess.run(
-            ["git"] + command,
+            ["git", *command],
             cwd=cwd,
             capture_output=capture_output,
             text=True,

@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 from branchspace.init_config import detect_project
+
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 def test_detect_project_finders(tmp_path: Path):

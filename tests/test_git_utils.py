@@ -3,15 +3,14 @@
 from __future__ import annotations
 
 import subprocess
+
 from pathlib import Path
-from tempfile import TemporaryDirectory
 
 import pytest
 
 from branchspace.git_utils import BranchInfo
 from branchspace.git_utils import GitStatus
 from branchspace.git_utils import GitWorktree
-from branchspace.git_utils import ProtectedBranchLevel
 from branchspace.git_utils import create_worktree
 from branchspace.git_utils import get_current_branch
 from branchspace.git_utils import get_git_status

@@ -82,13 +82,19 @@ def remove_worktree_for_branch(
     if worktree_path is None:
         raise WorktreeRemoveError(f"No worktree found for branch '{branch}'.")
 
-    if confirm:
-        if has_uncommitted_changes_with_untracked(worktree_path):
-            if not _confirm(f"Worktree '{branch}' has uncommitted changes. Remove anyway?"):
-                return RemovalResult(branch=branch, path=worktree_path, removed=False)
-        if has_unpushed_commits(worktree_path):
-            if not _confirm(f"Worktree '{branch}' has unpushed commits. Remove anyway?"):
-                return RemovalResult(branch=branch, path=worktree_path, removed=False)
+    if (
+        confirm
+        and has_uncommitted_changes_with_untracked(worktree_path)
+        and not _confirm(f"Worktree '{branch}' has uncommitted changes. Remove anyway?")
+    ):
+        return RemovalResult(branch=branch, path=worktree_path, removed=False)
+
+    if (
+        confirm
+        and has_unpushed_commits(worktree_path)
+        and not _confirm(f"Worktree '{branch}' has unpushed commits. Remove anyway?")
+    ):
+        return RemovalResult(branch=branch, path=worktree_path, removed=False)
 
     remove_worktree(worktree_path, repository_path=root)
 

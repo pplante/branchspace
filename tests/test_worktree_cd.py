@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 import pytest
+
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 from branchspace.worktree_cd import WorktreeLookupError
 from branchspace.worktree_cd import resolve_worktree_path

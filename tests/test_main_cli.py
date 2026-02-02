@@ -4,8 +4,6 @@ from __future__ import annotations
 
 import subprocess
 
-from pathlib import Path
-
 import pytest
 
 from click.testing import CliRunner
@@ -121,7 +119,7 @@ class TestMainCli:
 
         monkeypatch.setattr(
             "branchspace.main_cli.detect_shell_rc_files",
-            lambda: [],
+            list,
         )
         monkeypatch.setattr("branchspace.main_cli.render_manual_instructions", lambda: None)
 
