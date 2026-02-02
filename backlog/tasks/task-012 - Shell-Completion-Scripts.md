@@ -63,3 +63,17 @@ _BRANCHSPACE_COMPLETE=fish_source branchspace > ~/.config/fish/completions/branc
 - Added tests to assert completion script generation for bash/zsh/fish.
 - Adjusted module entrypoint to use prog name for completion scripts.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Verified Click shell completion support and added coverage.
+
+Changes:
+- Set module entrypoint to use the `branchspace` program name to align completion output.
+- Added tests to assert bash/zsh/fish completion script generation via Click env hooks.
+- Confirmed README completion instructions match the implementation.
+
+Tests:
+- pytest
+<!-- SECTION:FINAL_SUMMARY:END -->
