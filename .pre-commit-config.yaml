@@ -1,0 +1,55 @@
+fail_fast: false
+
+repos:
+  - repo: https://github.com/abravalheri/validate-pyproject
+    rev: v0.24.1
+    hooks:
+      - id: validate-pyproject
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.14.5
+    hooks:
+      # Run the linter.
+      - id: ruff-check
+        args: [ --fix, --exit-non-zero-on-fix ]
+      # Run the formatter.
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-shebang-scripts-are-executable
+      - id: check-yaml
+      - id: check-json
+        exclude: ^src/assets/locations.json
+      - id: check-toml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: name-tests-test
+        args: [ --pytest-test-first ]
+        exclude: |
+          (?x)^(
+              src/marvin_here/core/tests/factories.py|
+              src/marvin_here/users/tests/factories.py|
+              src/marvin_here/crawler/tests/factories.py|
+              src/marvin_the_agent/tests/fake_agents.py|
+              src/marvin_the_agent/tests/factories.py
+          )$
+  #          - id: no-commit-to-branch
+  #            name: prevent commits to main
+  #            args: [ --branch, main ]
+
+  - repo: https://github.com/oxc-project/mirrors-oxlint
+    rev: v1.37.0
+    hooks:
+      - id: oxlint
+        verbose: true
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.1
+    hooks:
+      - id: codespell # See pyproject.toml for args
+        exclude: ^src/assets/locations.json
+        additional_dependencies:
+          - tomli
