@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-02 00:52'
+updated_date: '2026-02-02 00:53'
 labels:
   - cli
   - shell
@@ -41,11 +41,11 @@ _BRANCHSPACE_COMPLETE=fish_source branchspace > ~/.config/fish/completions/branc
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Generates bash completion script
-- [ ] #2 Generates zsh completion script
-- [ ] #3 Generates fish completion script
-- [ ] #4 Completions include all commands and arguments
-- [ ] #5 Instructions in README match implementation
+- [x] #1 Generates bash completion script
+- [x] #2 Generates zsh completion script
+- [x] #3 Generates fish completion script
+- [x] #4 Completions include all commands and arguments
+- [x] #5 Instructions in README match implementation
 <!-- AC:END -->
 
 ## Implementation Plan
