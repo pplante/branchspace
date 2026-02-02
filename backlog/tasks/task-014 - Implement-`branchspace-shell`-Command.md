@@ -39,13 +39,13 @@ Implement Docker shell command for branch-specific containers.
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Opens interactive shell in container with branch-specific name
-- [ ] #2 Mounts current directory at /workspace
-- [ ] #3 Uses configured shell (bash default)
-- [ ] #4 Supports running single command instead of interactive shell
-- [ ] #5 Builds image from Dockerfile if build config specified
-- [ ] #6 Pulls image if image config specified
-- [ ] #7 Unit tests for Docker command generation
+- [x] #1 Opens interactive shell in container with branch-specific name
+- [x] #2 Mounts current directory at /workspace
+- [x] #3 Uses configured shell (bash default)
+- [x] #4 Supports running single command instead of interactive shell
+- [x] #5 Builds image from Dockerfile if build config specified
+- [x] #6 Pulls image if image config specified
+- [x] #7 Unit tests for Docker command generation
 <!-- AC:END -->
 
 ## Implementation Plan
