@@ -60,10 +60,4 @@ Implement automatic project detection and configuration generation.
 - Added init helpers to detect Dockerfiles and project type, prompt for container config, and write branchspace.json.
 - Wired `branchspace init` to generate config with prompts.
 - Added unit tests for project detection logic and CLI wiring.
-
-- Added init helpers to detect Dockerfiles and project type, prompt for container config, and write branchspace.json.
-
-- Wired `branchspace init` to generate config with prompts.
-
-- Added unit tests for project detection logic and CLI wiring.
 <!-- SECTION:NOTES:END -->
