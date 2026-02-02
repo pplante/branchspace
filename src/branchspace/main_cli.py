@@ -28,6 +28,7 @@ from branchspace.shell_integration import append_integration
 from branchspace.shell_integration import build_shell_function
 from branchspace.shell_integration import detect_shell_rc_files
 from branchspace.shell_integration import render_manual_instructions
+from branchspace.skill import format_skill_path
 from branchspace.skill import install_skill
 from branchspace.skill import is_skill_installed
 from branchspace.worktree_cd import WorktreeLookupError
@@ -285,10 +286,12 @@ def agents() -> None:
                     info("Skipped skill installation.")
                 else:
                     skill_path = install_skill(scope_key)
-                    success(f"Updated skill at {skill_path}")
+                    display_path = format_skill_path(skill_path, scope_key)
+                    success(f"Updated skill at {display_path}")
             else:
                 skill_path = install_skill(scope_key)
-                success(f"Installed skill at {skill_path}")
+                display_path = format_skill_path(skill_path, scope_key)
+                success(f"Installed skill at {display_path}")
 
     output_target = questionary.select(
         "Output instructions to:",

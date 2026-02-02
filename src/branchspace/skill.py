@@ -130,3 +130,29 @@ def install_skill(scope: str) -> Path:
     skill_md_path.write_text(content, encoding="utf-8")
 
     return skill_md_path
+
+
+def format_skill_path(path: Path, scope: str) -> str:
+    """Format a skill path for user-friendly display.
+
+    For project scope, returns a relative path like '.skills/branchspace/SKILL.md'.
+    For global scope, returns a home-relative path like '~/.skills/branchspace/SKILL.md'.
+
+    Args:
+        path: The absolute path to format
+        scope: Either "global" or "project"
+
+    Returns:
+        A user-friendly string representation of the path
+    """
+    if scope == "project":
+        try:
+            return str(path.relative_to(get_project_root()))
+        except ValueError:
+            return str(path)
+    elif scope == "global":
+        try:
+            return "~/" + str(path.relative_to(Path.home()))
+        except ValueError:
+            return str(path)
+    return str(path)

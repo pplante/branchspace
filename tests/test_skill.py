@@ -13,6 +13,7 @@ if TYPE_CHECKING:
 
 from branchspace.skill import SKILL_DESCRIPTION
 from branchspace.skill import SKILL_NAME
+from branchspace.skill import format_skill_path
 from branchspace.skill import generate_skill_content
 from branchspace.skill import get_global_skills_dir
 from branchspace.skill import get_project_skills_dir
@@ -170,3 +171,41 @@ class TestInstallSkill:
         expected = tmp_path / SKILL_NAME / "SKILL.md"
         assert result == expected
         assert result.exists()
+
+
+class TestFormatSkillPath:
+    """Tests for format_skill_path function."""
+
+    def test_formats_project_scope_as_relative(self, tmp_path: Path) -> None:
+        skill_path = tmp_path / ".skills" / SKILL_NAME / "SKILL.md"
+
+        with patch("branchspace.skill.get_project_root", return_value=tmp_path):
+            result = format_skill_path(skill_path, "project")
+
+        assert result == f".skills/{SKILL_NAME}/SKILL.md"
+
+    def test_formats_global_scope_with_tilde(self, tmp_path: Path) -> None:
+        home = tmp_path / "home"
+        home.mkdir()
+        skill_path = home / ".skills" / SKILL_NAME / "SKILL.md"
+
+        with patch("branchspace.skill.Path.home", return_value=home):
+            result = format_skill_path(skill_path, "global")
+
+        assert result == f"~/.skills/{SKILL_NAME}/SKILL.md"
+
+    def test_returns_absolute_if_not_relative_to_project(self, tmp_path: Path) -> None:
+        skill_path = tmp_path / "other" / ".skills" / SKILL_NAME / "SKILL.md"
+        project_root = tmp_path / "project"
+
+        with patch("branchspace.skill.get_project_root", return_value=project_root):
+            result = format_skill_path(skill_path, "project")
+
+        assert result == str(skill_path)
+
+    def test_returns_absolute_for_unknown_scope(self, tmp_path: Path) -> None:
+        skill_path = tmp_path / ".skills" / SKILL_NAME / "SKILL.md"
+
+        result = format_skill_path(skill_path, "unknown")
+
+        assert result == str(skill_path)
