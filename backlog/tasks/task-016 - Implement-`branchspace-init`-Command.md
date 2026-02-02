@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:23'
-updated_date: '2026-02-02 01:58'
+updated_date: '2026-02-02 01:59'
 labels:
   - cli
   - config
@@ -53,3 +53,17 @@ Implement automatic project detection and configuration generation.
 3. Generate branchspace.json with defaults + chosen containerConfig and write to repo root.
 4. Wire `branchspace init` to prompts and add unit tests for detection logic.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added init helpers to detect Dockerfiles and project type, prompt for container config, and write branchspace.json.
+- Wired `branchspace init` to generate config with prompts.
+- Added unit tests for project detection logic and CLI wiring.
+
+- Added init helpers to detect Dockerfiles and project type, prompt for container config, and write branchspace.json.
+
+- Wired `branchspace init` to generate config with prompts.
+
+- Added unit tests for project detection logic and CLI wiring.
+<!-- SECTION:NOTES:END -->
