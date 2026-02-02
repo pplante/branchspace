@@ -31,7 +31,7 @@ class ContainerBuildConfig(BaseModel):
 
     model_config = ConfigDict(populate_by_name=True)
 
-    context: str = Field(default=".", description="Build context path")
+    context: str = Field(description="Build context path")
     dockerfile: str = Field(default="Dockerfile", description="Dockerfile path")
 
 

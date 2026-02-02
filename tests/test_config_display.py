@@ -17,7 +17,7 @@ def test_build_config_table_includes_keys():
 
 
 def test_build_config_table_with_build_config():
-    config = BranchspaceConfig(container_config=ContainerBuildConfig())
+    config = BranchspaceConfig(containerConfig=ContainerBuildConfig(context="."))
     table = build_config_table(config)
 
     assert table.title == "Branchspace Configuration"

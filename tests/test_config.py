@@ -40,11 +40,12 @@ class TestContainerImageConfig:
 class TestContainerBuildConfig:
     """Tests for ContainerBuildConfig model."""
 
-    def test_create_with_defaults(self):
-        """Test creating config with default values."""
-        config = ContainerBuildConfig()
-        assert config.context == "."
-        assert config.dockerfile == "Dockerfile"
+    def test_requires_context(self):
+        """Test that context field is required."""
+        from pydantic import ValidationError
+
+        with pytest.raises(ValidationError):
+            ContainerBuildConfig.model_validate({})
 
     def test_create_with_custom_values(self):
         """Test creating config with custom values."""
@@ -149,6 +150,15 @@ class TestBranchspaceConfigParsing:
         assert isinstance(config.container_config, ContainerBuildConfig)
         assert config.container_config.context == "."
         assert config.container_config.dockerfile == "Dockerfile.dev"
+
+    def test_parse_build_container_config_defaults_dockerfile(self):
+        """Test parsing containerConfig with build configuration defaults."""
+        data = {"containerConfig": {"context": "docker"}}
+        config = BranchspaceConfig.model_validate(data)
+
+        assert isinstance(config.container_config, ContainerBuildConfig)
+        assert config.container_config.context == "docker"
+        assert config.container_config.dockerfile == "Dockerfile"
 
     def test_ignores_unknown_fields(self):
         """Test that unknown fields are ignored."""
