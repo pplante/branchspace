@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:23'
-updated_date: '2026-02-02 02:35'
+updated_date: '2026-02-02 02:36'
 labels:
   - config
 milestone: 'Phase 5: Polish & Cross-Platform'
@@ -49,3 +49,14 @@ branchspace create feature-auth  # Creates in $HOME/my-worktrees/...
 3. Update CLI help/docs to mention BRANCHSPACE_BASE.
 4. Add unit tests for env override and default base.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added BRANCHSPACE_BASE override in config load and updated default worktree path template.
+- Documented env var in CLI help and added unit tests for env handling.
+
+- Added BRANCHSPACE_BASE override in config load and updated default worktree path template.
+
+- Documented env var in CLI help and added unit tests for env handling.
+<!-- SECTION:NOTES:END -->
