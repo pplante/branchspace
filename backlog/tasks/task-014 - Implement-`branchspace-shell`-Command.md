@@ -64,3 +64,17 @@ Implement Docker shell command for branch-specific containers.
 - Wired `branchspace shell` to run docker pull/build + run with optional command argument.
 - Added unit tests for docker command generation and CLI wiring.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the `branchspace shell` Docker runner.
+
+Changes:
+- Added docker command builder supporting image pulls and Dockerfile builds with branch-based container naming.
+- Wired the CLI `shell` command to run docker commands and optional one-off command execution.
+- Added unit tests for docker command generation and CLI wiring.
+
+Tests:
+- pytest
+<!-- SECTION:FINAL_SUMMARY:END -->
