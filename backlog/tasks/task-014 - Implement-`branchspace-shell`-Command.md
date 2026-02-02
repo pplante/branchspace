@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-01-31 21:22'
-updated_date: '2026-02-02 01:31'
+updated_date: '2026-02-02 01:32'
 labels:
   - cli
   - docker
@@ -47,3 +47,12 @@ Implement Docker shell command for branch-specific containers.
 - [ ] #6 Pulls image if image config specified
 - [ ] #7 Unit tests for Docker command generation
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Add a docker command builder that inspects containerConfig, current branch, and shell settings to build docker run/build/pull commands.
+2. Implement logic for image vs build configs (pull or build) and build container name from branch.
+3. Wire `branchspace shell` to execute commands and handle optional single command argument.
+4. Add unit tests covering command generation for image and build configs.
+<!-- SECTION:PLAN:END -->
