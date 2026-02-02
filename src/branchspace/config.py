@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 import subprocess
 
+import os
+
 from pathlib import Path
 from typing import Annotated
 
@@ -71,7 +73,7 @@ class BranchspaceConfig(BaseModel):
 
     # Template for worktree directory path
     worktree_path_template: str = Field(
-        default="$BASE_PATH.worktree",
+        default_factory=lambda: f"{os.path.expanduser('~')}/worktrees/$BRANCH_NAME",
         alias="worktreePathTemplate",
         description="Template for worktree directory path",
     )
@@ -205,13 +207,20 @@ def load_config(path: Path | None = None) -> BranchspaceConfig:
     if path is None:
         path = find_config_file()
 
+    env_base = os.environ.get("BRANCHSPACE_BASE")
+
+    def apply_env_overrides(config: BranchspaceConfig) -> BranchspaceConfig:
+        if env_base:
+            config.worktree_path_template = f"{env_base}/$BRANCH_NAME"
+        return config
+
     # No config file found - return defaults
     if path is None:
-        return BranchspaceConfig()
+        return apply_env_overrides(BranchspaceConfig())
 
     # Config file specified but doesn't exist
     if not path.is_file():
-        return BranchspaceConfig()
+        return apply_env_overrides(BranchspaceConfig())
 
     # Load and parse the config file
     try:
@@ -224,7 +233,7 @@ def load_config(path: Path | None = None) -> BranchspaceConfig:
 
     # Validate with Pydantic
     try:
-        return BranchspaceConfig.model_validate(data)
+        return apply_env_overrides(BranchspaceConfig.model_validate(data))
     except ValidationError as e:
         # Format a user-friendly error message
         errors = []

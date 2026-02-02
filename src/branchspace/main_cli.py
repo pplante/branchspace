@@ -35,7 +35,10 @@ from branchspace.shell_integration import detect_shell_rc_files
 from branchspace.shell_integration import render_manual_instructions
 
 
-@click.group("branchspace", help="Manage git worktrees and environments.")
+@click.group(
+    "branchspace",
+    help="Manage git worktrees and environments. Env: BRANCHSPACE_BASE overrides worktree base.",
+)
 @click.version_option(__version__, "--version", prog_name="branchspace")
 def main() -> None:
     """Branchspace CLI."""

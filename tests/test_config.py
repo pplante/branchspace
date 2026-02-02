@@ -70,7 +70,7 @@ class TestBranchspaceConfigDefaults:
     def test_default_worktree_path_template(self):
         """Test default worktreePathTemplate matches README."""
         config = BranchspaceConfig()
-        assert config.worktree_path_template == "$BASE_PATH.worktree"
+        assert "$BRANCH_NAME" in config.worktree_path_template
 
     def test_default_post_create_cmd(self):
         """Test default postCreateCmd is empty list."""
@@ -179,6 +179,16 @@ class TestBranchspaceConfigParsing:
         assert config.shell == "fish"
         assert config.worktree_copy_patterns == [".env*", ".vscode/**"]
         assert config.purge_on_remove is False
+
+
+class TestBranchspaceConfigEnvOverrides:
+    """Tests for env var overrides."""
+
+    def test_env_base_override(self, monkeypatch, tmp_path: Path):
+        monkeypatch.setenv("BRANCHSPACE_BASE", str(tmp_path))
+        config = load_config(path=None)
+
+        assert config.worktree_path_template == f"{tmp_path}/$BRANCH_NAME"
 
 
 class TestGetGitRoot:
