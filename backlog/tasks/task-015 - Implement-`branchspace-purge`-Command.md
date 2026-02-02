@@ -36,12 +36,12 @@ Implement Docker cleanup command for current branch.
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Removes containers matching branch naming pattern
-- [ ] #2 Removes images built for branch (if build config)
-- [ ] #3 Removes volumes if any created
-- [ ] #4 Shows what will be removed before confirmation
-- [ ] #5 Dry-run option to preview changes
-- [ ] #6 Unit tests for purge logic
+- [x] #1 Removes containers matching branch naming pattern
+- [x] #2 Removes images built for branch (if build config)
+- [x] #3 Removes volumes if any created
+- [x] #4 Shows what will be removed before confirmation
+- [x] #5 Dry-run option to preview changes
+- [x] #6 Unit tests for purge logic
 <!-- AC:END -->
 
 ## Implementation Plan
