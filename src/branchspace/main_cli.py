@@ -20,6 +20,7 @@ from branchspace.docker_shell import DockerShellError
 from branchspace.docker_shell import run_docker_shell
 from branchspace.docker_purge import DockerPurgeError
 from branchspace.docker_purge import run_docker_purge
+from branchspace.init_config import init_config
 from branchspace.worktree_create import CreateWorktreeError
 from branchspace.worktree_create import create_worktrees
 from branchspace.worktree_cd import WorktreeLookupError
@@ -173,7 +174,13 @@ def purge(force: bool, dry_run: bool) -> None:
 @main.command(help="Initialize configuration for this repository.")
 def init() -> None:
     """Initialize branchspace configuration."""
-    click.echo("Not implemented yet.")
+    try:
+        config_path = init_config()
+    except RuntimeError as exc:
+        error(str(exc))
+        raise SystemExit(1) from exc
+
+    success(f"Created {config_path}")
 
 
 @main.command(name="config", help="Show or edit configuration.")

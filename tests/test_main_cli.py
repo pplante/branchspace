@@ -53,9 +53,7 @@ class TestMainCli:
 
     @pytest.mark.parametrize(
         "command",
-        [
-            "init",
-        ],
+        [],
     )
     def test_placeholder_commands(self, command: str):
         runner = CliRunner()
@@ -147,5 +145,13 @@ class TestMainCli:
         )
 
         result = runner.invoke(main, ["purge", "--dry-run"])
+
+        assert result.exit_code == 0
+
+    def test_init_creates_config(self, monkeypatch):
+        runner = CliRunner()
+        monkeypatch.setattr("branchspace.main_cli.init_config", lambda: "/repo/branchspace.json")
+
+        result = runner.invoke(main, ["init"])
 
         assert result.exit_code == 0
