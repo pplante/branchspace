@@ -40,3 +40,12 @@ branchspace create feature-auth  # Creates in $HOME/my-worktrees/...
 - [ ] #3 Environment variable documented in --help
 - [ ] #4 Unit tests for env var handling
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Add env var handling to config loading and/or worktree path resolution, defaulting to $HOME/worktrees.
+2. Ensure env override takes precedence over config for worktree base.
+3. Update CLI help/docs to mention BRANCHSPACE_BASE.
+4. Add unit tests for env override and default base.
+<!-- SECTION:PLAN:END -->
