@@ -1,9 +1,11 @@
 ---
 id: TASK-020
 title: Add agents command for AI instruction output
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@opencode'
 created_date: '2026-02-02 03:16'
+updated_date: '2026-02-02 03:47'
 labels:
   - cli
   - docs
