@@ -43,3 +43,12 @@ Implement Docker cleanup command for current branch.
 - [ ] #5 Dry-run option to preview changes
 - [ ] #6 Unit tests for purge logic
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Add docker purge helper to build lists of containers/images/volumes by branch naming pattern.
+2. Implement dry-run preview output and optional --force flag to skip confirmation.
+3. Wire `branchspace purge` to use the helper and questionary confirmation prompt.
+4. Add unit tests for resource discovery and purge command generation.
+<!-- SECTION:PLAN:END -->
