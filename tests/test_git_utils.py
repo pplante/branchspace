@@ -76,11 +76,12 @@ class TestIsGitRepository:
 class TestGetCurrentBranch:
     """Tests for get_current_branch function."""
 
-    def test_returns_branch_name(self):
+    def test_returns_branch_name(self, tmp_path: Path):
         """Test returns current branch name."""
-        branch = get_current_branch()
+        _init_git_repo(tmp_path, with_commit=True)
+        branch = get_current_branch(tmp_path)
         assert branch is not None
-        assert branch != "HEAD"
+        assert branch == "main"
 
     def test_returns_none_on_detached(self, tmp_path: Path):
         """Test returns None when in detached HEAD state."""

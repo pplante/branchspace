@@ -28,6 +28,9 @@ from branchspace.shell_integration import append_integration
 from branchspace.shell_integration import build_shell_function
 from branchspace.shell_integration import detect_shell_rc_files
 from branchspace.shell_integration import render_manual_instructions
+from branchspace.skill import format_skill_path
+from branchspace.skill import install_skill
+from branchspace.skill import is_skill_installed
 from branchspace.worktree_cd import WorktreeLookupError
 from branchspace.worktree_cd import resolve_worktree_path
 from branchspace.worktree_create import CreateWorktreeError
@@ -248,6 +251,47 @@ def agents() -> None:
     if not selection:
         info("No agents selected.")
         return
+
+    # Ask about skill installation
+    should_install_skill = questionary.confirm(
+        "Install the Branchspace Agent Skill for these agents?",
+        default=True,
+    ).unsafe_ask()
+
+    if should_install_skill:
+        scope_choices = [
+            questionary.Choice(
+                title="Project scope (.skills/ - committed with repo)",
+                value="project",
+            ),
+            questionary.Choice(
+                title="Global scope (~/.skills/ - available everywhere)",
+                value="global",
+            ),
+        ]
+        scope_key = questionary.select(
+            "Where should the skill be installed?",
+            choices=scope_choices,
+        ).unsafe_ask()
+
+        if scope_key is not None:
+            # Check if already installed
+            if is_skill_installed(scope_key):
+                update_mode = questionary.select(
+                    f"Skill already exists at {scope_key} scope. What would you like to do?",
+                    choices=["Update", "Skip"],
+                ).unsafe_ask()
+
+                if update_mode == "Skip":
+                    info("Skipped skill installation.")
+                else:
+                    skill_path = install_skill(scope_key)
+                    display_path = format_skill_path(skill_path, scope_key)
+                    success(f"Updated skill at {display_path}")
+            else:
+                skill_path = install_skill(scope_key)
+                display_path = format_skill_path(skill_path, scope_key)
+                success(f"Installed skill at {display_path}")
 
     output_target = questionary.select(
         "Output instructions to:",
