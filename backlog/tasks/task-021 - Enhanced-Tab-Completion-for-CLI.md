@@ -1,9 +1,11 @@
 ---
 id: TASK-021
 title: Enhanced Tab Completion for CLI
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@opencode'
 created_date: '2026-02-02 04:19'
+updated_date: '2026-02-03 06:52'
 labels:
   - cli
   - shell
