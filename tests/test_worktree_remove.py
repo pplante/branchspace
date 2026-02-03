@@ -26,21 +26,26 @@ def test_remove_worktree_blocks_protected_branch(tmp_path: Path, monkeypatch):
         remove_worktree_for_branch("main", BranchspaceConfig(), repo_root=repo_root, confirm=False)
 
 
-def test_remove_worktree_blocks_checked_out_elsewhere(tmp_path: Path, monkeypatch):
+def test_remove_worktree_blocks_checked_out_in_multiple_worktrees(tmp_path: Path, monkeypatch):
+    """Test that removal is blocked when branch is checked out in multiple worktrees."""
     repo_root = tmp_path / "repo"
     repo_root.mkdir()
-    worktree_path = repo_root / "feature"
-    worktree_path.mkdir()
+    worktree_path1 = repo_root / "feature1"
+    worktree_path1.mkdir()
+    worktree_path2 = repo_root / "feature2"
+    worktree_path2.mkdir()
 
     monkeypatch.setattr("branchspace.worktree_remove.get_git_root", lambda _path=None: repo_root)
     monkeypatch.setattr("branchspace.worktree_remove.get_protected_branches", lambda _path=None: [])
     monkeypatch.setattr(
         "branchspace.worktree_remove.list_worktrees",
-        lambda _path=None: [type("WT", (), {"branch": "feature", "path": worktree_path})()],
+        lambda _path=None: [
+            type("WT", (), {"branch": "feature", "path": worktree_path1})(),
+            type("WT", (), {"branch": "feature", "path": worktree_path2})(),
+        ],
     )
-    monkeypatch.setattr("branchspace.worktree_remove.Path.cwd", lambda: repo_root)
 
-    with pytest.raises(WorktreeRemoveError):
+    with pytest.raises(WorktreeRemoveError, match="checked out in multiple worktrees"):
         remove_worktree_for_branch(
             "feature", BranchspaceConfig(), repo_root=repo_root, confirm=False
         )
@@ -63,7 +68,6 @@ def test_remove_worktree_confirms_dirty(tmp_path: Path, monkeypatch):
         lambda _path=None: True,
     )
     monkeypatch.setattr("branchspace.worktree_remove._confirm", lambda _prompt: False)
-    monkeypatch.setattr("branchspace.worktree_remove.Path.cwd", lambda: worktree_path)
 
     result = remove_worktree_for_branch(
         "feature", BranchspaceConfig(), repo_root=repo_root, confirm=True

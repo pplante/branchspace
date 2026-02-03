@@ -44,11 +44,14 @@ def _is_protected(branch: str, repo_root: Path) -> bool:
     return branch in protected
 
 
-def _branch_checked_out_elsewhere(branch: str, worktrees: Sequence, current_path: Path) -> bool:
-    for worktree in worktrees:
-        if worktree.branch == branch and worktree.path.resolve() != current_path:
-            return True
-    return False
+def _branch_checked_out_in_multiple_worktrees(branch: str, worktrees: Sequence) -> bool:
+    """Check if a branch is checked out in multiple worktrees.
+
+    Returns True if the branch appears in more than one worktree,
+    which would make removal ambiguous.
+    """
+    count = sum(1 for wt in worktrees if wt.branch == branch)
+    return count > 1
 
 
 def _confirm(prompt: str) -> bool:
@@ -74,9 +77,8 @@ def remove_worktree_for_branch(
         raise WorktreeRemoveError(f"Branch '{branch}' is protected and cannot be removed.")
 
     worktrees = list_worktrees(root)
-    current_path = Path.cwd().resolve()
-    if _branch_checked_out_elsewhere(branch, worktrees, current_path):
-        raise WorktreeRemoveError(f"Branch '{branch}' is checked out in another worktree.")
+    if _branch_checked_out_in_multiple_worktrees(branch, worktrees):
+        raise WorktreeRemoveError(f"Branch '{branch}' is checked out in multiple worktrees.")
 
     worktree_path = _find_worktree_path(branch, worktrees)
     if worktree_path is None:
