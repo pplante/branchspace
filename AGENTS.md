@@ -626,3 +626,30 @@ Tests:
 Full help available: `backlog --help`
 
 <!-- BACKLOG.MD GUIDELINES END -->
+
+# Branchspace - AI Agent Instructions
+
+Intended for: OpenCode
+
+## Project Overview
+branchspace is a CLI tool that manages git worktrees and branch-specific Docker environments.
+It provides a unified interface for creating, listing, and removing worktrees, plus running
+containerized shells tied to a branch.
+
+## Command Reference
+- `branchspace create <branch>`: Create one or more new worktrees.
+- `branchspace rm <branch>`: Remove worktrees safely.
+- `branchspace ls`: List worktrees and their status.
+- `branchspace cd <branch>`: Print the worktree path for shell integration.
+- `branchspace shell [command]`: Open an interactive container shell.
+- `branchspace purge`: Clean up Docker resources for worktrees.
+- `branchspace init`: Initialize `branchspace.json` configuration.
+- `branchspace config`: View resolved configuration values.
+- `branchspace shell-integration`: Install shell helpers for `branchspace cd`.
+
+## Integration Tips
+- Use `branchspace create` instead of manual `git worktree add` to keep workflows consistent.
+- Pair `branchspace ls` with `branchspace cd` for quick navigation between branches.
+- Prefer `branchspace shell` when the repo relies on containerized tooling.
+- Run `branchspace config` to confirm configuration values before automation steps.
+- Honor protected branches and prompts; avoid force removals without confirmation.
