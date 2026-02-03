@@ -1,7 +1,7 @@
 ---
 id: TASK-021
 title: Enhanced Tab Completion for CLI
-status: In Progress
+status: Done
 assignee:
   - '@opencode'
 created_date: '2026-02-02 04:19'

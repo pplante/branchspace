@@ -11,6 +11,7 @@ from branchspace.agents import format_agent_label
 from branchspace.agents import generate_instructions
 from branchspace.agents import get_project_root
 from branchspace.agents import write_instructions
+from branchspace.completion import WorktreeBranchComplete
 from branchspace.config import ConfigError
 from branchspace.config import load_config
 from branchspace.config_display import load_config_view
@@ -79,7 +80,7 @@ def create(branch: tuple[str, ...]) -> None:
 
 
 @main.command(help="Remove a worktree.")
-@click.argument("branch", nargs=-1, required=True)
+@click.argument("branch", nargs=-1, required=True, shell_complete=WorktreeBranchComplete())
 def rm(branch: tuple[str, ...]) -> None:
     """Remove a worktree."""
     try:
@@ -105,7 +106,7 @@ def rm(branch: tuple[str, ...]) -> None:
 
 
 @main.command(help="Change to a worktree.")
-@click.argument("branch", required=False)
+@click.argument("branch", required=False, shell_complete=WorktreeBranchComplete())
 def cd(branch: str | None) -> None:
     """Change to a worktree."""
     try:
@@ -223,12 +224,12 @@ def shell_integration() -> None:
         render_manual_instructions()
         return
 
-    snippet = build_shell_function()
     updated = False
     for candidate in candidates:
         label = f"{candidate.name}: {candidate.rc_path}"
         if label not in selection:
             continue
+        snippet = build_shell_function(candidate.name)
         if append_integration(candidate.rc_path, snippet):
             success(f"Updated {candidate.rc_path}")
             updated = True
