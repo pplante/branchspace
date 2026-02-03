@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@opencode'
 created_date: '2026-02-02 04:19'
-updated_date: '2026-02-03 06:52'
+updated_date: '2026-02-03 06:56'
 labels:
   - cli
   - shell
@@ -169,12 +169,12 @@ _BRANCHSPACE_COMPLETE=fish_source branchspace | source
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Dynamic completion for `rm` command shows existing worktree branches
-- [ ] #2 Dynamic completion for `cd` command shows existing worktree branches
-- [ ] #3 shell-integration installs bash completion eval in .bashrc
-- [ ] #4 shell-integration installs zsh completion eval in .zshrc
-- [ ] #5 shell-integration detects and supports fish shell (~/.config/fish/config.fish)
-- [ ] #6 shell-integration installs fish completion script
-- [ ] #7 All existing tests continue to pass
-- [ ] #8 New tests cover completion functionality
+- [x] #1 Dynamic completion for `rm` command shows existing worktree branches
+- [x] #2 Dynamic completion for `cd` command shows existing worktree branches
+- [x] #3 shell-integration installs bash completion eval in .bashrc
+- [x] #4 shell-integration installs zsh completion eval in .zshrc
+- [x] #5 shell-integration detects and supports fish shell (~/.config/fish/config.fish)
+- [x] #6 shell-integration installs fish completion script
+- [x] #7 All existing tests continue to pass
+- [x] #8 New tests cover completion functionality
 <!-- AC:END -->
